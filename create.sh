@@ -11,4 +11,3 @@ veewee vbox build --force debian-6-amd64-plain
 s3cmd put debian-6-amd64-plain.box s3://s3.cargomedia.ch/vagrant-boxes/
 
 s3cmd setacl --acl-public --recursive s3://s3.cargomedia.ch/vagrant-boxes/
-

@@ -3,9 +3,9 @@ Veewee::Definition.declare({
   :memory_size=> '512',
   :disk_size => '30000', :disk_format => 'VDI', :hostiocache => 'off',
   :os_type_id => 'Debian_64',
-  :iso_file => "debian-6.0.6-amd64-netinst.iso",
-  :iso_src => "http://cdimage.debian.org/debian-cd/6.0.6/amd64/iso-cd/debian-6.0.6-amd64-netinst.iso",
-  :iso_md5 => "00585d63f8a560a73540bd718263319a",
+  :iso_file => "debian-6.0.7-amd64-netinst.iso",
+  :iso_src => "http://s3.cargomedia.ch/vagrant-boxes/iso/debian-6.0.7-amd64-netinst.iso",
+  :iso_md5 => "cc509122349a27bf1958e1ea0ce4065d",
   :iso_download_timeout => "1000",
   :boot_wait => "3", :boot_cmd_sequence => [
     '<Esc>',

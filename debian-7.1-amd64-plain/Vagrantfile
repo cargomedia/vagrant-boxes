@@ -6,7 +6,7 @@ end
 
 Vagrant.configure("2") do |config|
 	config.vm.box = "debian-7.1-amd64-plain"
-	config.vm.box_url = "debian-7.1-amd64-plain-plain.box"
+	config.vm.box_url = "debian-7.1-amd64-plain.box"
 	config.vm.hostname = "debian-7.1-amd64-plain"
 	config.vm.provider :virtualbox do |vb|
 		vb.customize ["modifyvm", :id, "--memory", 1024]

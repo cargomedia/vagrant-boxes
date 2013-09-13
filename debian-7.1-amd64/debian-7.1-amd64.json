@@ -1,0 +1,74 @@
+{
+	"builders": [
+		{
+			"boot_command": [
+				"<esc><wait>",
+                "install ",
+                "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
+                "debian-installer=en_US ",
+                "auto ",
+                "locale=en_US ",
+                "kbd-chooser/method=de ",
+                "netcfg/get_hostname={{ .Name }} ",
+                "netcfg/get_domain=vagrantup.com ",
+                "fb=false ",
+                "debconf/frontend=noninteractive ",
+                "console-setup/ask_detect=false ",
+                "console-keymaps-at/keymap=en_US ",
+                "keyboard-configuration/xkb-keymap=en_US ",
+                "<enter><wait>"
+			],
+			"boot_wait": "3s",
+			"disk_size": 80000,
+			"guest_os_type": "Debian_64",
+			"http_directory": "http",
+			"iso_checksum": "80f498a1f9daa76bc911ae13692e4495",
+			"iso_checksum_type": "md5",
+			"iso_url": "ftp://mirror.switch.ch/mirror/debian-cd/7.1.0/amd64/iso-cd/debian-7.1.0-amd64-netinst.iso",
+			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+			"virtualbox_version_file": ".vbox_version",
+			"shutdown_command": "echo 'halt -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
+			"ssh_password": "vagrant",
+			"ssh_port": 22,
+			"ssh_username": "root",
+			"ssh_wait_timeout": "10000s",
+			"type": "virtualbox",
+			"vboxmanage": [
+				[
+					"modifyvm", "{{.Name}}", "--memory", "1024"
+				],
+				[
+					"modifyvm", "{{.Name}}", "--cpus", "2"
+				]
+			],
+			"vm_name": "packer-tmp-debian-7.1-amd64-plain"
+		}
+	],
+	"post-processors": [
+		{
+			"keep_input_artifact": true,
+			"output": "debian-7.1-amd64-plain.box",
+			"type": "vagrant"
+		}
+	],
+	"provisioners": [
+		{
+			"override": {
+				"virtualbox": {},
+				"vmware": {}
+			},
+			"scripts": [
+				"scripts/base.sh",
+				"scripts/vagrant.sh",
+                "scripts/virtualbox.sh",
+                "scripts/ruby.sh",
+                "scripts/puppet.sh",
+                "scripts/chef.sh",
+				"scripts/cleanup-virtualbox.sh",
+				"scripts/cleanup.sh",
+				"scripts/zerodisk.sh"
+			],
+			"type": "shell"
+		}
+	]
+}

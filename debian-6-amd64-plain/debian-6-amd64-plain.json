@@ -49,12 +49,12 @@
 			  "2"
 		  ]
 	  ],
-      "vm_name": "packer-tmp-debian-6-amd64"
+      "vm_name": "packer-tmp-debian-6-amd64-plain"
     }
   ],
   "post-processors": [
     {
-      "output": "debian-6-amd64.box",
+      "output": "debian-6-amd64-plain.box",
       "type": "vagrant"
     }
   ],
@@ -70,9 +70,6 @@
         "scripts/base.sh",
         "scripts/vagrant.sh",
         "scripts/virtualbox.sh",
-		"scripts/ruby.sh",
-		"scripts/puppet.sh",
-		"scripts/chef.sh",
 		"scripts/cleanup-virtualbox.sh",
         "scripts/cleanup.sh",
         "scripts/zerodisk.sh"

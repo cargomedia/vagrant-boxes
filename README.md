@@ -1,5 +1,7 @@
 # Vagrant boxes
-Store a `Vagrantfile` like this:
+Generate vagrant boxes to be used as in a Vagrantfile
+
+E.g.
 ```ruby
 Vagrant.configure("2") do |config|
 	config.vm.box = "debian-6-amd64"
@@ -8,4 +10,17 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-Then run `vagrant up` to download and launch the box.
+Currently we have four flavour of boxes ready to be used:
+
+- debian-6-amd64
+- debian-6-amd64-plain
+- debian-7-amd64
+- debian-7-amd64-plain
+
+where `-plain` is a bare-bones box without puppet nor ruby installed.
+
+To generate a box, invoke `<path>/<box-type>/create.sh` e.g.
+`Projects/vagrant-boxes/debian-6-amd64/create.sh`
+
+
+

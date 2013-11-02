@@ -13,7 +13,7 @@ sed -i -e 's/%sudo ALL=(ALL) ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 echo 'UseDNS no' >> /etc/ssh/sshd_config
 
 # Remove 5s grub timeout to speed up booting
-echo <<EOF > /etc/default/grub
+cat <<EOF > /etc/default/grub
 # If you change this file, run 'update-grub' afterwards to update
 # /boot/grub/grub.cfg.
 

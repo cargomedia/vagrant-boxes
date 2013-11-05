@@ -1,5 +1,2 @@
-.DS_Store
-vagrant-boxes.iml
-iso/
 packer_cache/
 output-virtualbox/

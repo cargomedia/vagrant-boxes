@@ -1,13 +1,28 @@
-#!/bin/sh -e
-cd $(dirname $0)
+#!/bin/bash -e
 
-veewee vbox build --force debian-6-amd64
-veewee vbox validate debian-6-amd64
-/usr/bin/vagrant package --base debian-6-amd64 --output debian-6-amd64.box
-s3cmd put debian-6-amd64.box s3://s3.cargomedia.ch/vagrant-boxes/
+BASE_DISTRO_DIR=$(dirname $0)
+BASE_DISTRO=$(basename ${BASE_DISTRO_DIR})
 
-veewee vbox build --force debian-6-amd64-plain
-/usr/bin/vagrant package --base debian-6-amd64-plain --output debian-6-amd64-plain.box
-s3cmd put debian-6-amd64-plain.box s3://s3.cargomedia.ch/vagrant-boxes/
+if ! (test -e ${BASE_DISTRO_DIR}/${BASE_DISTRO}.json); then
+	echo
+	echo Packer file not found.
+	echo
+	echo Choose one of the following box types to generate:
+	find . -iname "debian*" -type d
+	echo
+	echo by invoking the script inside the chosen directory
+	echo e.g. debian-6-amd64/$(basename $0)
+    echo
+	exit 1
+fi
 
+
+cd ${BASE_DISTRO_DIR}
+
+packer validate ${BASE_DISTRO}.json
+packer build ${BASE_DISTRO}.json
+
+s3cmd put ${BASE_DISTRO}.box s3://s3.cargomedia.ch/vagrant-boxes/
 s3cmd setacl --acl-public --recursive s3://s3.cargomedia.ch/vagrant-boxes/
+cd -
+

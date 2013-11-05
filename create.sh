@@ -1,28 +1,30 @@
 #!/bin/bash -e
+cd $(dirname $0)
 
-BASE_DISTRO_DIR=$(dirname $0)
-BASE_DISTRO=$(basename ${BASE_DISTRO_DIR})
-
-if ! (test -e ${BASE_DISTRO_DIR}/${BASE_DISTRO}.json); then
+function usage() {
+	echo "Usage: $(basename ${0}) <template>"
 	echo
-	echo Packer file not found.
-	echo
-	echo Choose one of the following box types to generate:
-	find . -iname "debian*" -type d
-	echo
-	echo by invoking the script inside the chosen directory
-	echo e.g. debian-6-amd64/$(basename $0)
-    echo
+	echo "Available templates:"
+	find . -iname "*.json" -type f
 	exit 1
+}
+
+if (test -z "${1}"); then
+	usage
+fi
+
+DISTRO=$(dirname ${1})
+TEMPLATE=$(basename ${1})
+if ! (test -e ${DISTRO}/${TEMPLATE}); then
+	echo "Template does not exist: ${1}"
+	echo
+	usage
 fi
 
 
-cd ${BASE_DISTRO_DIR}
-
-packer validate ${BASE_DISTRO}.json
-packer build ${BASE_DISTRO}.json
+cd ${DISTRO}
+packer validate ${TEMPLATE}
+packer build ${TEMPLATE}
 
 s3cmd put ${BASE_DISTRO}.box s3://s3.cargomedia.ch/vagrant-boxes/
 s3cmd setacl --acl-public --recursive s3://s3.cargomedia.ch/vagrant-boxes/
-cd -
-

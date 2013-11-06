@@ -1,12 +1,9 @@
 # Vagrant boxes
-Generate [Vagrant](http://www.vagrantup.com/) boxes with [packer](http://www.packer.io/).
-
-To be used in a `Vagrantfile` like this:
+Generate [Vagrant](http://www.vagrantup.com/) boxes with [packer](http://www.packer.io/) for your `Vagrantfile`:
 ```ruby
 Vagrant.configure("2") do |config|
 	config.vm.box = "debian-6-amd64"
 	config.vm.box_url = "http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64.box"
-	config.vm.network :private_network, ip: "10.10.10.10"
 end
 ```
 

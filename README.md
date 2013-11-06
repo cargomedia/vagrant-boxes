@@ -1,5 +1,5 @@
 # Vagrant boxes
-Generate vagrant boxes to be used as in a Vagrantfile
+Generate vagrant boxes to be used in a Vagrantfile.
 
 E.g.
 ```ruby
@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-### Available boxes
+### Available boxes (hosted on S3)
 The `-plain` versions do not contain "git", "puppet" or "ruby".
 
 - [debian-6-amd64](http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64.box)

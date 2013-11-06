@@ -56,7 +56,6 @@
 		{
 			"scripts": [
 				"scripts/base.sh",
-				"scripts/git.sh",
 				"scripts/vagrant.sh",
 				"scripts/virtualbox.sh",
 				"scripts/cleanup-virtualbox.sh",

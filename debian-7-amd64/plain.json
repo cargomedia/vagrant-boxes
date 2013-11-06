@@ -29,7 +29,7 @@
 			"shutdown_command": "echo 'halt -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
 			"ssh_password": "vagrant",
 			"ssh_port": 22,
-			"ssh_username": "root",
+			"ssh_username": "vagrant",
 			"ssh_wait_timeout": "10000s",
 			"type": "virtualbox",
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
@@ -47,13 +47,17 @@
 	],
 	"post-processors": [
 		{
-			"keep_input_artifact": true,
 			"output": "debian-7-amd64-plain.box",
 			"type": "vagrant"
 		}
 	],
 	"provisioners": [
 		{
+			"override": {
+				"virtualbox": {
+					"execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+				}
+			},
 			"scripts": [
 				"scripts/base.sh",
 				"scripts/vagrant.sh",

@@ -1,2 +1,2 @@
 packer_cache/
-output-virtualbox/
+*.box

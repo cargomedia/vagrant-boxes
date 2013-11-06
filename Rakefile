@@ -51,7 +51,12 @@ namespace :spec do
       box_path = Pathname.new(File.join(File.dirname(template), box_filename)).realpath.to_s
       File.delete('spec/current.box') if File.exists?('spec/current.box')
       File.symlink(box_path, 'spec/current.box')
-      t.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb', 'spec/git.rb', 'spec/ruby.rb', 'spec/puppet.rb')
+
+      if 'plain' == File.basename(template_name)
+        t.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb')
+      else
+        t.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb', 'spec/git.rb', 'spec/ruby.rb', 'spec/puppet.rb')
+      end
     end
   end
 end

@@ -9,6 +9,10 @@ groupadd chef
 # Create the user vagrant with password vagrant
 useradd -G sudo -p $(perl -e'print crypt("vagrant", "vagrant")') -m -s /bin/bash -N vagrant
 
+# Set up sudo
+cp /etc/sudoers /etc/sudoers.orig
+sed -i -e 's/%sudo ALL=(ALL) ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
+
 # Install vagrant keys
 mkdir -pm 700 /home/vagrant/.ssh
 curl -kLo /home/vagrant/.ssh/authorized_keys \
@@ -21,5 +25,3 @@ echo 'Welcome to your Vagrant-built virtual machine.' > /var/run/motd
 
 # Install NFS client
 apt-get -y install nfs-common
-
-

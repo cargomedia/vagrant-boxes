@@ -19,4 +19,4 @@ echo "pre-up sleep 2" >> /etc/network/interfaces
 
 # Zero out the free space to save space in the final image:
 dd if=/dev/zero of=/EMPTY bs=1M
-rm -rf /EMPTY
+rm -f /EMPTY

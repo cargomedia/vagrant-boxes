@@ -42,7 +42,6 @@ namespace :spec do
   templates.each do |template|
     template_name = template.sub(/.json$/, '')
 
-
     desc 'Validate box'
     RSpec::Core::RakeTask.new(template_name) do |t|
       require_relative 'spec/vagrant_helper'

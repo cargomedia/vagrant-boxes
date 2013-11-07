@@ -59,13 +59,13 @@
 				}
 			},
 			"scripts": [
-                "scripts/base.sh",
-                "scripts/vagrant.sh",
-                "scripts/virtualbox.sh",
-                "scripts/git.sh",
-                "scripts/ruby.sh",
-                "scripts/puppet.sh",
-                "scripts/cleanup.sh"
+				"scripts/base.sh",
+				"scripts/vagrant.sh",
+				"scripts/virtualbox.sh",
+				"scripts/git.sh",
+				"scripts/ruby.sh",
+				"scripts/puppet.sh",
+				"scripts/cleanup.sh"
 			],
 			"type": "shell"
 		}

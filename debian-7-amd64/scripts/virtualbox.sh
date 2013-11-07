@@ -23,4 +23,6 @@ if test -f .vbox_version ; then
 
   /etc/init.d/vboxadd start
 
+  # Cleanup Virtualbox
+  rm $VBOX_ISO
 fi

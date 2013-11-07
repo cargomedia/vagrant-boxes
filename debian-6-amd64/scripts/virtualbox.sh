@@ -18,4 +18,7 @@ if test -f .vbox_version ; then
   mount -o loop $VBOX_ISO /mnt
   yes|sh /mnt/VBoxLinuxAdditions.run
   umount /mnt
+
+  # Cleanup Virtualbox
+  rm $VBOX_ISO
 fi

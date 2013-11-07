@@ -1,4 +1,8 @@
 if test -f .vbox_version ; then
+
+  # Without libdbus virtualbox would not start automatically after compile
+  apt-get -y install --no-install-recommends libdbus-1-3
+
   # The netboot installs the VirtualBox support (old) so we have to remove it
   if test -f /etc/init.d/virtualbox-ose-guest-utils ; then
     /etc/init.d/virtualbox-ose-guest-utils stop
@@ -6,13 +10,7 @@ if test -f .vbox_version ; then
 
   rmmod vboxguest
   aptitude -y purge virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms virtualbox-ose-guest-utils
-
-  # Install dkms for dynamic compiles
-
-  apt-get install -y dkms
-
-  # If libdbus is not installed, virtualbox will not autostart
-  apt-get -y install --no-install-recommends libdbus-1-3
+  aptitude -y install dkms
 
   # Install the VirtualBox guest additions
   VBOX_VERSION=$(cat .vbox_version)
@@ -20,8 +18,6 @@ if test -f .vbox_version ; then
   mount -o loop $VBOX_ISO /mnt
   yes|sh /mnt/VBoxLinuxAdditions.run
   umount /mnt
-
-  /etc/init.d/vboxadd start
 
   # Cleanup Virtualbox
   rm $VBOX_ISO

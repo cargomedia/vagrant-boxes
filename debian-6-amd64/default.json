@@ -67,7 +67,6 @@
 				"scripts/puppet.sh",
 				"scripts/cleanup-virtualbox.sh",
 				"scripts/cleanup.sh",
-				"scripts/zerodisk.sh"
 			],
 			"type": "shell"
 		}

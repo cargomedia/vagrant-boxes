@@ -51,7 +51,7 @@
 		{
 			"override": {
 				"virtualbox": {
-					"execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+					"execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
 				}
 			},
 			"scripts": [

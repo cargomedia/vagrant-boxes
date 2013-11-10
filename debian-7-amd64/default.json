@@ -26,7 +26,7 @@
 			"iso_checksum": "b86774fe4de88be6378ba3d71b8029bd",
 			"iso_checksum_type": "md5",
 			"iso_url": "http://s3.cargomedia.ch/vagrant-boxes/iso/debian-7.2.0-amd64-netinst.iso",
-            "shutdown_command": "echo 'vagrant'|sudo -S halt -p",
+			"shutdown_command": "echo 'vagrant'|sudo -S halt -p",
 			"ssh_password": "vagrant",
 			"ssh_port": 22,
 			"ssh_username": "vagrant",
@@ -34,10 +34,10 @@
 			"type": "virtualbox",
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"virtualbox_version_file": ".vbox_version",
-            "vboxmanage": [
-                ["modifyvm", "{{.Name}}", "--memory", "1024"],
-                ["modifyvm", "{{.Name}}", "--cpus", "2"]
-            ],
+			"vboxmanage": [
+				["modifyvm", "{{.Name}}", "--memory", "1024"],
+				["modifyvm", "{{.Name}}", "--cpus", "2"]
+			],
 			"vm_name": "debian-7-amd64"
 		}
 	],

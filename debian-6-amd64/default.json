@@ -26,7 +26,7 @@
 			"iso_checksum": "d675b89fa6b241e6e40783296a5bd92e",
 			"iso_checksum_type": "md5",
 			"iso_url": "http://s3.cargomedia.ch/vagrant-boxes/iso/debian-6.0.8-amd64-netinst.iso",
-			"shutdown_command": "echo 'vagrant'|sudo -S halt -p",
+			"shutdown_command": "echo 'vagrant' | sudo -S halt -p",
 			"ssh_password": "vagrant",
 			"ssh_port": 22,
 			"ssh_username": "vagrant",

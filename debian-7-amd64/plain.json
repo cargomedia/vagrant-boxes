@@ -3,8 +3,8 @@
 		{
 			"boot_command": [
 				"<esc><wait>",
-				"install <wait>",
-				"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
+				"install ",
+				"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
 				"debian-installer=en_US ",
 				"auto ",
 				"locale=en_US ",
@@ -16,7 +16,7 @@
 				"console-setup/ask_detect=false ",
 				"console-keymaps-at/keymap=en_US ",
 				"keyboard-configuration/xkb-keymap=en_US ",
-				"<enter><wait>"
+				"<enter>"
 			],
 			"boot_wait": "3s",
 			"disk_size": 30000,
@@ -26,7 +26,7 @@
 			"iso_checksum": "b86774fe4de88be6378ba3d71b8029bd",
 			"iso_checksum_type": "md5",
 			"iso_url": "http://s3.cargomedia.ch/vagrant-boxes/iso/debian-7.2.0-amd64-netinst.iso",
-			"shutdown_command": "echo 'halt -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
+			"shutdown_command": "echo 'vagrant' | sudo -S halt -p",
 			"ssh_password": "vagrant",
 			"ssh_port": 22,
 			"ssh_username": "vagrant",
@@ -35,12 +35,8 @@
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"virtualbox_version_file": ".vbox_version",
 			"vboxmanage": [
-				[
-					"modifyvm", "{{.Name}}", "--memory", "1024"
-				],
-				[
-					"modifyvm", "{{.Name}}", "--cpus", "2"
-				]
+				["modifyvm", "{{.Name}}", "--memory", "1024"],
+				["modifyvm", "{{.Name}}", "--cpus", "2"]
 			],
 			"vm_name": "debian-7-amd64-plain"
 		}
@@ -55,7 +51,7 @@
 		{
 			"override": {
 				"virtualbox": {
-					"execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+					"execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
 				}
 			},
 			"scripts": [

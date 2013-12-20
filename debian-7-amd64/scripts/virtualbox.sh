@@ -12,9 +12,8 @@ if test -f .vbox_version ; then
   aptitude -y purge virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms virtualbox-ose-guest-utils
   aptitude -y install dkms
 
-  # Install the VirtualBox guest additions
-  VBOX_VERSION=$(cat .vbox_version)
-  VBOX_ISO=VBoxGuestAdditions_$VBOX_VERSION.iso
+# Install the VirtualBox guest additions
+  VBOX_ISO=VBoxGuestAdditions.iso
   mount -o loop $VBOX_ISO /mnt
   yes|sh /mnt/VBoxLinuxAdditions.run
   umount /mnt

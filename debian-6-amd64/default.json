@@ -21,7 +21,6 @@
 			"boot_wait": "3s",
 			"disk_size": 30000,
 			"guest_os_type": "Debian_64",
-			"guest_additions_url": "http://download.virtualbox.org/virtualbox/{{.Version}}/VBoxGuestAdditions_{{.Version}}.iso",
 			"http_directory": "http",
 			"iso_checksum": "d675b89fa6b241e6e40783296a5bd92e",
 			"iso_checksum_type": "md5",
@@ -32,7 +31,6 @@
 			"ssh_username": "vagrant",
 			"ssh_wait_timeout": "10000s",
 			"type": "virtualbox",
-			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"virtualbox_version_file": ".vbox_version",
 			"vboxmanage": [
 				["modifyvm", "{{.Name}}", "--memory", "1024"],

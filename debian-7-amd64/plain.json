@@ -21,7 +21,7 @@
 			"boot_wait": "3s",
 			"disk_size": 30000,
 			"guest_os_type": "Debian_64",
-			"guest_additions_url": "http://s3.cargomedia.ch/vagrant-boxes/iso/VBoxGuestAdditions_4.3.4.iso",
+			"guest_additions_url": "http://s3.cargomedia.ch/vagrant-boxes/iso/VBoxGuestAdditions_4.3.6.iso",
 			"http_directory": "http",
 			"iso_checksum": "b86774fe4de88be6378ba3d71b8029bd",
 			"iso_checksum_type": "md5",

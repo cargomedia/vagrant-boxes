@@ -19,7 +19,7 @@
 				"<enter>"
 			],
 			"boot_wait": "3s",
-			"disk_size": 30000,
+			"disk_size": 250000,
 			"guest_os_type": "Debian_64",
 			"http_directory": "http",
 			"iso_checksum": "d675b89fa6b241e6e40783296a5bd92e",
@@ -30,10 +30,10 @@
 			"ssh_port": 22,
 			"ssh_username": "vagrant",
 			"ssh_wait_timeout": "10000s",
-			"type": "virtualbox",
+			"type": "virtualbox-iso",
 			"virtualbox_version_file": ".vbox_version",
 			"vboxmanage": [
-				["modifyvm", "{{.Name}}", "--memory", "1024"],
+				["modifyvm", "{{.Name}}", "--memory", "8192"],
 				["modifyvm", "{{.Name}}", "--cpus", "2"]
 			],
 			"vm_name": "debian-6-amd64-plain"
@@ -48,7 +48,7 @@
 	"provisioners": [
 		{
 			"override": {
-				"virtualbox": {
+				"virtualbox-iso": {
 					"execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
 				}
 			},

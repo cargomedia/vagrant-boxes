@@ -1,4 +1,5 @@
-# Vagrant boxes
+Vagrant boxes
+=============
 Generate [Vagrant](http://www.vagrantup.com/) boxes with [packer](http://www.packer.io/) for your `Vagrantfile`:
 ```ruby
 Vagrant.configure("2") do |config|
@@ -7,15 +8,17 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-### Available boxes (hosted on S3)
+Available Virtualbox images
+---------------------------
 The `-plain` versions do not contain "git", "puppet" or "ruby".
 
-- [debian-6-amd64](http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64.box)
-- [debian-6-amd64-plain](http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64-plain.box)
-- [debian-7-amd64](http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64.box)
-- [debian-7-amd64-plain](http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64-plain.box)
+- http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64.box
+- http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64-plain.box
+- http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64.box
+- http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64-plain.box
 
-### Rakefile
+Build Virtualbox images
+-----------------------
 Build, validate and upload boxes. See `rake --tasks`:
 ```
 rake build:debian-6-amd64/default   # Build box
@@ -28,3 +31,4 @@ rake upload:debian-6-amd64/default  # Upload box
 rake upload:debian-6-amd64/plain    # Upload box
 [...]
 ```
+

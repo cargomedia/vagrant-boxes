@@ -41,8 +41,9 @@
 	],
 	"post-processors": [
 		{
+			"type": "vagrant",
 			"output": "debian-6-amd64-plain.box",
-			"type": "vagrant"
+			"only": ["virtualbox-iso"]
 		}
 	],
 	"provisioners": [

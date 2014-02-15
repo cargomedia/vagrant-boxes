@@ -54,13 +54,14 @@
 			},
 			"scripts": [
 				"scripts/base.sh",
-				"scripts/virtualbox-vagrant.sh",
 				"scripts/virtualbox.sh",
+				"scripts/virtualbox-vagrant.sh",
 				"scripts/git.sh",
 				"scripts/rsync.sh",
 				"scripts/ruby.sh",
 				"scripts/puppet.sh",
-				"scripts/cleanup.sh"
+				"scripts/cleanup.sh",
+				"scripts/virtualbox-cleanup.sh"
 			],
 			"type": "shell"
 		}

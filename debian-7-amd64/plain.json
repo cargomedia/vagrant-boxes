@@ -54,9 +54,10 @@
 			},
 			"scripts": [
 				"scripts/base.sh",
-				"scripts/virtualbox-vagrant.sh",
 				"scripts/virtualbox.sh",
-				"scripts/cleanup.sh"
+				"scripts/virtualbox-vagrant.sh",
+				"scripts/cleanup.sh",
+				"scripts/virtualbox-cleanup.sh"
 			],
 			"type": "shell"
 		}

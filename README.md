@@ -12,10 +12,10 @@ Available Virtualbox images
 ---------------------------
 The `-plain` versions do not contain "git", "puppet" or "ruby".
 
-- http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64.box
-- http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64-plain.box
-- http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64.box
-- http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64-plain.box
+- debian-6-amd64: http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64.box
+- debian-6-amd64-plain: http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64-plain.box
+- debian-7-amd64: http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64.box
+- debian-7-amd64-plain: http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64-plain.box
 
 Build Virtualbox images
 -----------------------
@@ -32,3 +32,9 @@ rake upload:debian-6-amd64/plain    # Upload box
 [...]
 ```
 
+Build AWS images
+----------------
+```
+rake build:debian-7-amd64/default builder=amazon-ebs AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'
+rake build:debian-7-amd64/plain builder=amazon-ebs AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'
+```

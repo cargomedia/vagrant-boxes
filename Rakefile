@@ -4,6 +4,7 @@ require 'json'
 require 'pathname'
 
 s3_url = 's3://s3.cargomedia.ch/vagrant-boxes/'
+builder = ENV['builder'] || 'virtualbox-iso'
 templates = Dir.glob('*/*.json')
 
 namespace :build do
@@ -14,8 +15,8 @@ namespace :build do
     task template_name do |t|
       commands = []
       commands << "cd #{File.dirname(template)}"
-      commands << "packer validate #{File.basename(template)}"
-      commands << "packer build #{File.basename(template)}"
+      commands << "packer validate -only=#{builder} #{File.basename(template)}"
+      commands << "packer build -only=#{builder} #{File.basename(template)}"
       system commands.join(' && ')
     end
   end

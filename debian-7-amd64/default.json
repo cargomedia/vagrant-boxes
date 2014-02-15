@@ -37,6 +37,17 @@
 				["modifyvm", "{{.Name}}", "--cpus", "2"]
 			],
 			"vm_name": "debian-7-amd64"
+		},
+		{
+			"type": "amazon-ebs",
+			"region": "eu-west-1",
+			"source_ami": "ami-9ef001e9",
+			"instance_type": "m3.medium",
+			"ssh_username": "admin",
+			"ami_name": "debian-7-amd64/default {{timestamp}}",
+            "ami_description": "https://github.com/cargomedia/vagrant-boxes",
+            "ami_groups": ["all"],
+            "ssh_timeout": "5m"
 		}
 	],
 	"post-processors": [

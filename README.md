@@ -17,6 +17,10 @@ The `-plain` versions do not contain "git", "puppet" or "ruby".
 - debian-7-amd64: http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64.box
 - debian-7-amd64-plain: http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64-plain.box
 
+Available Amazon Machine Images (AMI)
+-------------------------------------
+- debian-7-amd64: `ami-d6ee1ea1` (eu-west-1)
+
 Build Virtualbox images
 -----------------------
 Build, validate and upload boxes. See `rake --tasks`:
@@ -32,7 +36,7 @@ rake upload:debian-6-amd64/plain    # Upload box
 [...]
 ```
 
-Build AWS images
+Build AMI images
 ----------------
 Based on [official Debian AMIs](https://wiki.debian.org/Cloud/AmazonEC2Image/Wheezy).
 ```

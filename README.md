@@ -19,7 +19,9 @@ The `-plain` versions do not contain "git", "puppet" or "ruby".
 
 Available Amazon Machine Images (AMI)
 -------------------------------------
-- debian-7-amd64: `ami-d6ee1ea1` (eu-west-1)
+| Type                   | eu-west-1    |
+| ---------------------- |--------------|
+| debian-7-amd64         | ami-d6ee1ea1 |
 
 Build Virtualbox images
 -----------------------

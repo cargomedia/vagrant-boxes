@@ -68,7 +68,7 @@
 			},
 			"scripts": [
 				"scripts/base.sh",
-				"scripts/vagrant.sh",
+				"scripts/virtualbox-vagrant.sh",
 				"scripts/virtualbox.sh",
 				"scripts/git.sh",
 				"scripts/rsync.sh",

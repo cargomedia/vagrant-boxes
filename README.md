@@ -34,6 +34,7 @@ rake upload:debian-6-amd64/plain    # Upload box
 
 Build AWS images
 ----------------
+Based on [official Debian AMIs](https://wiki.debian.org/Cloud/AmazonEC2Image/Wheezy).
 ```
 rake build:debian-7-amd64/default builder=amazon-ebs AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'
 rake build:debian-7-amd64/plain builder=amazon-ebs AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'

@@ -57,6 +57,7 @@
 				"scripts/vagrant.sh",
 				"scripts/virtualbox.sh",
 				"scripts/git.sh",
+                "scripts/rsync.sh",
 				"scripts/ruby.sh",
 				"scripts/puppet.sh",
 				"scripts/cleanup.sh"

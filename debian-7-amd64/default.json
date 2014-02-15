@@ -45,9 +45,9 @@
 			"instance_type": "m3.medium",
 			"ssh_username": "admin",
 			"ami_name": "debian-7-amd64/default {{timestamp}}",
-            "ami_description": "https://github.com/cargomedia/vagrant-boxes",
-            "ami_groups": ["all"],
-            "ssh_timeout": "5m"
+			"ami_description": "https://github.com/cargomedia/vagrant-boxes",
+			"ami_groups": ["all"],
+			"ssh_timeout": "5m"
 		}
 	],
 	"post-processors": [
@@ -61,6 +61,9 @@
 			"override": {
 				"virtualbox-iso": {
 					"execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
+				},
+				"amazon-ebs": {
+					"execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'"
 				}
 			},
 			"scripts": [
@@ -68,6 +71,7 @@
 				"scripts/vagrant.sh",
 				"scripts/virtualbox.sh",
 				"scripts/git.sh",
+				"scripts/rsync.sh",
 				"scripts/ruby.sh",
 				"scripts/puppet.sh",
 				"scripts/cleanup.sh"

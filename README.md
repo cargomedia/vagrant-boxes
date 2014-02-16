@@ -1,12 +1,6 @@
 Vagrant boxes
 =============
-Generate [Vagrant](http://www.vagrantup.com/) boxes with [packer](http://www.packer.io/) for your `Vagrantfile`:
-```ruby
-Vagrant.configure("2") do |config|
-	config.vm.box = "debian-6-amd64"
-	config.vm.box_url = "http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64.box"
-end
-```
+Generate [Vagrant](http://www.vagrantup.com/) boxes with [packer](http://www.packer.io/).
 
 Available Virtualbox images
 ---------------------------
@@ -16,6 +10,14 @@ The `-plain` versions do not contain "git", "puppet" or "ruby".
 - debian-6-amd64-plain: http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64-plain.box
 - debian-7-amd64: http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64.box
 - debian-7-amd64-plain: http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64-plain.box
+
+Example `Vagrantfile`:
+```ruby
+Vagrant.configure('2') do |config|
+  config.vm.box = 'debian-6-amd64'
+  config.vm.box_url = 'http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64.box'
+end
+```
 
 Available Amazon Machine Images (AMI)
 --------------------------------------------------------

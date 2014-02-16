@@ -26,7 +26,7 @@ Available Amazon Machine Images (AMI)
 | debian-7-amd64         | ami-a8d929df | ami-1341467a |
 | debian-7-amd64-plain   | ami-c0da2ab7 | ami-3740475e |
 
-Example `Vagrantfile` (using the [vagrant AWS provider plugin](https://github.com/mitchellh/vagrant-aws):
+Example `Vagrantfile` (using the [vagrant AWS provider plugin](https://github.com/mitchellh/vagrant-aws)):
 ```ruby
 Vagrant.configure('2') do |config|
   config.vm.provider :aws do |aws, override|

@@ -22,6 +22,7 @@ Available Amazon Machine Images (AMI)
 | Type                   | eu-west-1    | us-east-1    |
 | ---------------------- |--------------|--------------|
 | debian-7-amd64         | ami-a8d929df | ami-1341467a |
+| debian-7-amd64-plain   | ami-c0da2ab7 | ami-3740475e |
 
 Build Virtualbox images
 -----------------------

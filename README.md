@@ -14,8 +14,8 @@ The `-plain` versions do not contain "git", "puppet" or "ruby".
 Example `Vagrantfile`:
 ```ruby
 Vagrant.configure('2') do |config|
-  config.vm.box = 'debian-6-amd64'
-  config.vm.box_url = 'http://s3.cargomedia.ch/vagrant-boxes/debian-6-amd64.box'
+  config.vm.box = 'debian-7-amd64'
+  config.vm.box_url = 'http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64.box'
 end
 ```
 
@@ -25,6 +25,28 @@ Available Amazon Machine Images (AMI)
 | ---------------------- |--------------|--------------|
 | debian-7-amd64         | ami-a8d929df | ami-1341467a |
 | debian-7-amd64-plain   | ami-c0da2ab7 | ami-3740475e |
+
+Example `Vagrantfile` (using the [vagrant AWS provider plugin](https://github.com/mitchellh/vagrant-aws):
+```ruby
+Vagrant.configure('2') do |config|
+  config.vm.provider :aws do |aws, override|
+    override.vm.box = 'dummy'
+    override.vm.box_url = 'https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box'
+    override.ssh.username = 'admin'
+    override.ssh.private_key_path = '~/.ssh/<private-key>.pem'
+
+    aws.access_key_id = '<aws-access-key>'
+    aws.secret_access_key = '<aws-secret-key>'
+    aws.keypair_name = '<keypair-name>'
+
+    aws.ami = 'ami-a8d929df'
+    aws.region = 'eu-west-1'
+    aws.instance_type = 'm3.medium'
+    aws.security_groups = '<security-group-id>'
+  end
+end
+
+```
 
 Build Virtualbox images
 -----------------------

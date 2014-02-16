@@ -4,7 +4,7 @@ require 'json'
 require 'pathname'
 
 s3_url = 's3://s3.cargomedia.ch/vagrant-boxes/'
-builder = ENV['builder'] || 'virtualbox-iso'
+builder = ENV['builder'] || 'virtualbox'
 templates = Dir.glob('*/*.json')
 
 namespace :build do

@@ -1,6 +1,7 @@
 {
 	"builders": [
 		{
+			"name": "virtualbox",
 			"type": "virtualbox-iso",
 			"boot_command": [
 				"<esc><wait>",
@@ -39,6 +40,7 @@
 			"vm_name": "debian-7-amd64"
 		},
 		{
+			"name": "aws",
 			"type": "amazon-ebs",
 			"region": "eu-west-1",
 			"source_ami": "ami-9ef001e9",
@@ -54,16 +56,16 @@
 		{
 			"type": "vagrant",
 			"output": "debian-7-amd64.box",
-			"only": ["virtualbox-iso"]
+			"only": ["virtualbox"]
 		}
 	],
 	"provisioners": [
 		{
 			"override": {
-				"virtualbox-iso": {
+				"virtualbox": {
 					"execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
 				},
-				"amazon-ebs": {
+				"aws": {
 					"execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'"
 				}
 			},

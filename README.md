@@ -18,10 +18,10 @@ The `-plain` versions do not contain "git", "puppet" or "ruby".
 - debian-7-amd64-plain: http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64-plain.box
 
 Available Amazon Machine Images (AMI)
--------------------------------------
+-----------------------------------------
 | Type                   | eu-west-1    |
 | ---------------------- |--------------|
-| debian-7-amd64         | ami-d6ee1ea1 |
+| debian-7-amd64         | ami-XXXXXXXX |
 
 Build Virtualbox images
 -----------------------
@@ -42,6 +42,6 @@ Build AMI images
 ----------------
 Based on [official Debian AMIs](https://wiki.debian.org/Cloud/AmazonEC2Image/Wheezy).
 ```
-rake build:debian-7-amd64/default builder=amazon-ebs AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'
-rake build:debian-7-amd64/plain builder=amazon-ebs AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'
+rake build:debian-7-amd64/default builder=aws AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'
+rake build:debian-7-amd64/plain builder=aws AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'
 ```

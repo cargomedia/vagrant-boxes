@@ -18,6 +18,13 @@ module VagrantBoxes
       path_relative.sub(/.json$/, '').to_s
     end
 
+    def output_path(builder)
+      template_data = JSON.parse(IO.read(path))
+      box_path = template_data['post-processors'][0]['output']
+      box_path.sub!('{{.Provider}}', builder)
+      File.join(File.dirname(path), box_path).to_s
+    end
+
     def exec(command)
       output = ''
       Dir.chdir(File.dirname(path)) do

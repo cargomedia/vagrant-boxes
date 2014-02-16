@@ -13,17 +13,11 @@ require 'vagrant_boxes'
 
 environment = VagrantBoxes::Environment.new(File.dirname(__FILE__))
 
-def box_path(template)
-  template_data = JSON.parse(IO.read(template))
-  box_path = template_data['post-processors'][0]['output']
-  box_path.sub!('{{.Provider}}', @builder)
-end
-
 namespace :build do
   environment.find_templates.each do |template|
     desc 'Build box'
     task template.name do |t|
-      artifacts_dir = File.dirname(box_path(template.path))
+      artifacts_dir = File.dirname(template.output_path(@builder))
       FileUtils.mkdir_p artifacts_dir
       template.exec("packer build -only=#{@builder} #{File.basename(template.path)}")
     end
@@ -35,7 +29,7 @@ namespace :upload do
     desc 'Upload box'
     task template.name do |t|
       raise 'Uploading is only supported for virtualbox-builder' if @builder != 'virtualbox'
-      box_path = box_path(template.path)
+      box_path = template.output_path(@builder)
       s3_path = File.basename(box_path)
 
       commands = []
@@ -51,11 +45,10 @@ namespace :spec do
   environment.find_templates.each do |template|
     desc 'Validate box'
     RSpec::Core::RakeTask.new(template.name) do |t|
-      box_path = box_path(template.path)
-      box_path_absolute = Pathname.new(File.join(File.dirname(template.path), box_path)).realpath.to_s
+      box_path = template.output_path(@builder)
 
       File.delete('spec/current.box') if File.exists?('spec/current.box')
-      File.symlink(box_path_absolute, 'spec/current.box')
+      File.symlink(box_path, 'spec/current.box')
 
       if 'plain' == File.basename(template.name)
         t.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb')

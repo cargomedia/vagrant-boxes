@@ -19,8 +19,17 @@ module VagrantBoxes
     end
 
     def exec(command)
-      output = `cd #{File.dirname(template)} && #{command}`
-      raise "Failure executing `#{command}`" if $? > 0
+      output = ''
+      Dir.chdir(File.dirname(path)) do
+        io = IO.popen(command, :err => [:child, :out]).each do |line|
+          puts line
+          output += line
+        end
+        io.close
+        if $?.exitstatus > 0
+          raise "Failure executing command `#{command}`."
+        end
+      end
       output
     end
   end

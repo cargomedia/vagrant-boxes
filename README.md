@@ -18,10 +18,10 @@ The `-plain` versions do not contain "git", "puppet" or "ruby".
 - debian-7-amd64-plain: http://s3.cargomedia.ch/vagrant-boxes/debian-7-amd64-plain.box
 
 Available Amazon Machine Images (AMI)
------------------------------------------
-| Type                   | eu-west-1    |
-| ---------------------- |--------------|
-| debian-7-amd64         | ami-c8d727bf |
+--------------------------------------------------------
+| Type                   | eu-west-1    | us-east-1    |
+| ---------------------- |--------------|--------------|
+| debian-7-amd64         | ami-a8d929df | ami-1341467a |
 
 Build Virtualbox images
 -----------------------

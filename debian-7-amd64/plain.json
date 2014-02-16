@@ -37,7 +37,20 @@
 				["modifyvm", "{{.Name}}", "--memory", "8192"],
 				["modifyvm", "{{.Name}}", "--cpus", "2"]
 			],
-			"vm_name": "debian-7-amd64-plain"
+			"vm_name": "debian-7-amd64"
+		},
+		{
+			"name": "aws",
+			"type": "amazon-ebs",
+			"region": "eu-west-1",
+			"source_ami": "ami-9ef001e9",
+			"instance_type": "m3.medium",
+			"ssh_username": "admin",
+			"ami_name": "debian-7-amd64/plain {{timestamp}}",
+			"ami_description": "https://github.com/cargomedia/vagrant-boxes",
+			"ami_groups": ["all"],
+			"ami_regions": ["us-east-1"],
+			"ssh_timeout": "5m"
 		}
 	],
 	"post-processors": [
@@ -52,6 +65,9 @@
 			"override": {
 				"virtualbox": {
 					"execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
+				},
+				"aws": {
+					"execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'"
 				}
 			},
 			"scripts": [

@@ -49,6 +49,7 @@
 			"ami_name": "debian-7-amd64/default {{timestamp}}",
 			"ami_description": "https://github.com/cargomedia/vagrant-boxes",
 			"ami_groups": ["all"],
+			"ami_regions": ["us-east-1"],
 			"ssh_timeout": "5m"
 		}
 	],

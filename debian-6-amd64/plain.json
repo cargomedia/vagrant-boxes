@@ -43,8 +43,8 @@
 	"post-processors": [
 		{
 			"type": "vagrant",
-			"output": "debian-6-amd64-plain.box",
-			"only": ["virtualbox"]
+			"output": "artifacts/{{.Provider}}/debian-6-amd64-plain.box",
+			"keep_input_artifact": true
 		}
 	],
 	"provisioners": [

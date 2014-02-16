@@ -21,27 +21,20 @@ Available Amazon Machine Images (AMI)
 -----------------------------------------
 | Type                   | eu-west-1    |
 | ---------------------- |--------------|
-| debian-7-amd64         | ami-XXXXXXXX |
+| debian-7-amd64         | ami-c8d727bf |
 
 Build Virtualbox images
 -----------------------
-Build, validate and upload boxes. See `rake --tasks`:
+Build, validate and upload Virtualbox images.
 ```
-rake build:debian-6-amd64/default   # Build box
-rake build:debian-6-amd64/plain     # Build box
-[...]
-rake spec:debian-6-amd64/default    # Validate box
-rake spec:debian-6-amd64/plain      # Validate box
-[...]
-rake upload:debian-6-amd64/default  # Upload box
-rake upload:debian-6-amd64/plain    # Upload box
-[...]
+rake build:debian-7-amd64/default
+rake spec:debian-7-amd64/default
+rake upload:debian-7-amd64/default
 ```
 
 Build AMI images
 ----------------
-Based on [official Debian AMIs](https://wiki.debian.org/Cloud/AmazonEC2Image/Wheezy).
+Build AMIs based on [official Debian AMIs](https://wiki.debian.org/Cloud/AmazonEC2Image/Wheezy).
 ```
 rake build:debian-7-amd64/default builder=aws AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'
-rake build:debian-7-amd64/plain builder=aws AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'
 ```

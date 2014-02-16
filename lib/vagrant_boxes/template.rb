@@ -17,5 +17,11 @@ module VagrantBoxes
     def name
       path_relative.sub(/.json$/, '').to_s
     end
+
+    def exec(command)
+      output = `cd #{File.dirname(template)} && #{command}`
+      raise "Failure executing `#{command}`" if $? > 0
+      output
+    end
   end
 end

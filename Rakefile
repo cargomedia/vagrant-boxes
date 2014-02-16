@@ -19,19 +19,13 @@ def box_path(template)
   box_path.sub!('{{.Provider}}', @builder)
 end
 
-def template_exec(template, command)
-  output = `cd #{File.dirname(template)} && #{command}`
-  raise "Failure executing `#{command}`" if $? > 0
-  output
-end
-
 namespace :build do
   environment.find_templates.each do |template|
     desc 'Build box'
     task template.name do |t|
       artifacts_dir = File.dirname(box_path(template.path))
       FileUtils.mkdir_p artifacts_dir
-      template_exec(template.path, "packer build -only=#{@builder} #{File.basename(template.path)}")
+      template.exec("packer build -only=#{@builder} #{File.basename(template.path)}")
     end
   end
 end

@@ -22,7 +22,6 @@ namespace :build do
       commands = []
       commands << "cd #{File.dirname(template)}"
       commands << "mkdir -p #{File.dirname(box_path(template))}"
-      commands << "packer validate -only=#{@builder} #{File.basename(template)}"
       commands << "packer build -only=#{@builder} #{File.basename(template)}"
       system commands.join(' && ')
     end

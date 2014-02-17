@@ -49,8 +49,8 @@ module VagrantBoxes
         box_path = output_path(builder)
         s3_path = "#{builder}/#{name}.box"
 
-        puts "s3cmd put #{box_path} #{s3_url}#{s3_path}"
-        puts "s3cmd setacl --acl-public #{s3_url}#{s3_path}"
+        exec(['s3cmd', 'put', box_path, "#{s3_url}#{s3_path}"])
+        exec(['s3cmd', 'setacl', '--acl-public', "#{s3_url}#{s3_path}"])
       end
     end
 

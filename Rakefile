@@ -27,7 +27,7 @@ namespace :upload do
   environment.find_templates.each do |template|
     desc 'Upload box'
     task template.name do |t|
-      template.upload!(builders, 's3://s3.cargomedia.ch/vagrant-boxes/')
+      template.upload!(builders, 's3://vagrant-boxes.cargomedia.ch/')
     end
   end
 end

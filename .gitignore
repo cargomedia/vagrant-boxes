@@ -2,3 +2,5 @@
 /*/packer_cache/
 /*/output-virtualbox/
 /*/artifacts/
+/puppet/.tmp
+/puppet/modules

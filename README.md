@@ -52,6 +52,12 @@ end
 
 Development (building and uploading)
 ------------------------------------
+Download required puppet modules using [librarian-puppet](http://librarian-puppet.com/):
+```
+cd puppet
+librarian-puppet install
+```
+
 Build a box:
 ```
 rake build:debian-7-amd64-default [aws_key_id=<access-key>] [aws_key_secret=<secret-key>] [builder=<builder-only>]

@@ -59,7 +59,6 @@ module VagrantBoxes
         puts "Uploading #{s3_path}..."
         s3.buckets[s3_bucket].objects[s3_path].write(:file => box_path)
       end
-      Process.wait
     end
 
     def exec(command, env = {})

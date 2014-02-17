@@ -41,7 +41,7 @@
       "headless": true
     },
     {
-      "name": "aws-eu-west-1",
+      "name": "aws",
       "type": "amazon-ebs",
       "region": "eu-west-1",
       "source_ami": "ami-9ef001e9",
@@ -50,25 +50,14 @@
       "ami_name": "debian-7-amd64/default {{timestamp}}",
       "ami_description": "https://github.com/cargomedia/vagrant-boxes",
       "ami_groups": ["all"],
-      "ssh_timeout": "5m"
-    },
-    {
-      "name": "aws-us-east-1",
-      "type": "amazon-ebs",
-      "region": "us-east-1",
-      "source_ami": "ami-d3675dba",
-      "instance_type": "m3.medium",
-      "ssh_username": "admin",
-      "ami_name": "debian-7-amd64/default {{timestamp}}",
-      "ami_description": "https://github.com/cargomedia/vagrant-boxes",
-      "ami_groups": ["all"],
+      "ami_regions": ["us-east-1"],
       "ssh_timeout": "5m"
     }
   ],
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "artifacts/{{.Provider}}/debian-7-amd64.box",
+      "output": "artifacts/{{.BuildName}}/debian-7-amd64.box",
       "keep_input_artifact": true
     }
   ],

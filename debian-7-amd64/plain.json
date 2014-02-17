@@ -57,7 +57,7 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "artifacts/{{.Provider}}/debian-7-amd64-plain.box",
+      "output": "artifacts/{{.BuildName}}/debian-7-amd64-plain.box",
       "keep_input_artifact": true
     }
   ],

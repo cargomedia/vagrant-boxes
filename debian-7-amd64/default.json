@@ -37,7 +37,8 @@
         ["modifyvm", "{{.Name}}", "--memory", "8192"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"]
       ],
-      "vm_name": "debian-7-amd64"
+      "vm_name": "debian-7-amd64",
+      "headless": true
     },
     {
       "name": "aws",

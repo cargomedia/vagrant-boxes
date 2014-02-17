@@ -37,7 +37,8 @@
         ["modifyvm", "{{.Name}}", "--memory", "8192"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"]
       ],
-      "vm_name": "debian-6-amd64-plain"
+      "vm_name": "debian-6-amd64-plain",
+      "headless": true
     }
   ],
   "post-processors": [

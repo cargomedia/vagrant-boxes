@@ -1,88 +1,87 @@
 {
-	"builders": [
-		{
-			"name": "virtualbox",
-			"type": "virtualbox-iso",
-			"boot_command": [
-				"<esc><wait>",
-				"install ",
-				"preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-				"debian-installer=en_US ",
-				"auto ",
-				"locale=en_US ",
-				"kbd-chooser/method=de ",
-				"netcfg/get_hostname={{ .Name }} ",
-				"netcfg/get_domain=vagrantup.com ",
-				"fb=false ",
-				"debconf/frontend=noninteractive ",
-				"console-setup/ask_detect=false ",
-				"console-keymaps-at/keymap=en_US ",
-				"keyboard-configuration/xkb-keymap=en_US ",
-				"<enter>"
-			],
-			"boot_wait": "3s",
-			"disk_size": 250000,
-			"guest_os_type": "Debian_64",
-			"http_directory": "http",
-			"iso_checksum": "b86774fe4de88be6378ba3d71b8029bd",
-			"iso_checksum_type": "md5",
-			"iso_url": "http://s3.cargomedia.ch/vagrant-boxes/iso/debian-7.2.0-amd64-netinst.iso",
-			"shutdown_command": "echo 'vagrant' | sudo -S halt -p",
-			"ssh_password": "vagrant",
-			"ssh_port": 22,
-			"ssh_username": "vagrant",
-			"ssh_wait_timeout": "10000s",
-			"virtualbox_version_file": ".vbox_version",
-			"vboxmanage": [
-				["modifyvm", "{{.Name}}", "--memory", "8192"],
-				["modifyvm", "{{.Name}}", "--cpus", "2"]
-			],
-			"vm_name": "debian-7-amd64",
-            "headless": true
-		},
-		{
-			"name": "aws",
-			"type": "amazon-ebs",
-			"region": "eu-west-1",
-			"source_ami": "ami-9ef001e9",
-			"instance_type": "m3.medium",
-			"ssh_username": "admin",
-			"ami_name": "debian-7-amd64/default {{timestamp}}",
-			"ami_description": "https://github.com/cargomedia/vagrant-boxes",
-			"ami_groups": ["all"],
-			"ami_regions": ["us-east-1"],
-			"ssh_timeout": "5m"
-		}
-	],
-	"post-processors": [
-		{
-			"type": "vagrant",
-			"output": "artifacts/{{.Provider}}/debian-7-amd64.box",
-			"keep_input_artifact": true
-		}
-	],
-	"provisioners": [
-		{
-			"override": {
-				"virtualbox": {
-					"execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
-				},
-				"aws": {
-					"execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'"
-				}
-			},
-			"scripts": [
-				"scripts/base.sh",
-				"scripts/virtualbox.sh",
-				"scripts/virtualbox-vagrant.sh",
-				"scripts/git.sh",
-				"scripts/rsync.sh",
-				"scripts/ruby.sh",
-				"scripts/puppet.sh",
-				"scripts/cleanup.sh",
-				"scripts/virtualbox-cleanup.sh"
-			],
-			"type": "shell"
-		}
-	]
+  "builders": [
+    {
+      "name": "virtualbox",
+      "type": "virtualbox-iso",
+      "boot_command": [
+        "<esc><wait>",
+        "install ",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+        "debian-installer=en_US ",
+        "auto ",
+        "locale=en_US ",
+        "kbd-chooser/method=de ",
+        "netcfg/get_hostname={{ .Name }} ",
+        "netcfg/get_domain=vagrantup.com ",
+        "fb=false ",
+        "debconf/frontend=noninteractive ",
+        "console-setup/ask_detect=false ",
+        "console-keymaps-at/keymap=en_US ",
+        "keyboard-configuration/xkb-keymap=en_US ",
+        "<enter>"
+      ],
+      "boot_wait": "3s",
+      "disk_size": 250000,
+      "guest_os_type": "Debian_64",
+      "http_directory": "http",
+      "iso_checksum": "b86774fe4de88be6378ba3d71b8029bd",
+      "iso_checksum_type": "md5",
+      "iso_url": "http://s3.cargomedia.ch/vagrant-boxes/iso/debian-7.2.0-amd64-netinst.iso",
+      "shutdown_command": "echo 'vagrant' | sudo -S halt -p",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_username": "vagrant",
+      "ssh_wait_timeout": "10000s",
+      "virtualbox_version_file": ".vbox_version",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "8192"],
+        ["modifyvm", "{{.Name}}", "--cpus", "2"]
+      ],
+      "vm_name": "debian-7-amd64"
+    },
+    {
+      "name": "aws",
+      "type": "amazon-ebs",
+      "region": "eu-west-1",
+      "source_ami": "ami-9ef001e9",
+      "instance_type": "m3.medium",
+      "ssh_username": "admin",
+      "ami_name": "debian-7-amd64/default {{timestamp}}",
+      "ami_description": "https://github.com/cargomedia/vagrant-boxes",
+      "ami_groups": ["all"],
+      "ami_regions": ["us-east-1"],
+      "ssh_timeout": "5m"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "artifacts/{{.Provider}}/debian-7-amd64.box",
+      "keep_input_artifact": true
+    }
+  ],
+  "provisioners": [
+    {
+      "override": {
+        "virtualbox": {
+          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
+        },
+        "aws": {
+          "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'"
+        }
+      },
+      "scripts": [
+        "scripts/base.sh",
+        "scripts/virtualbox.sh",
+        "scripts/virtualbox-vagrant.sh",
+        "scripts/git.sh",
+        "scripts/rsync.sh",
+        "scripts/ruby.sh",
+        "scripts/puppet.sh",
+        "scripts/cleanup.sh",
+        "scripts/virtualbox-cleanup.sh"
+      ],
+      "type": "shell"
+    }
+  ]
 }

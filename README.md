@@ -21,7 +21,7 @@ Example `Vagrantfile`:
 Vagrant.configure('2') do |config|
   config.vm.box = 'debian-7-amd64'
 
-  config.vm.provider :virtualbox do |aws, override|
+  config.vm.provider :virtualbox do |virtualbox, override|
     override.vm.box_url = 'http://vagrant-boxes.cargomedia.ch/virtualbox/debian-7-amd64-default.box'
   end
 end

@@ -57,7 +57,9 @@ module VagrantBoxes
         box_path = output_path(builder)
         s3_path = "#{builder}/#{name}.box"
         puts "Uploading #{s3_path}..."
-        s3.buckets[s3_bucket].objects[s3_path].write(:file => box_path)
+        s3_object = s3.buckets[s3_bucket].objects[s3_path]
+        s3_object.write(:file => box_path)
+        s3_object.acl = :public_read
       end
     end
 

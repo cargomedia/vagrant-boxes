@@ -37,7 +37,7 @@
         ["modifyvm", "{{.Name}}", "--memory", "8192"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"]
       ],
-      "vm_name": "debian-7-amd64",
+      "vm_name": "debian-7-amd64-plain",
       "headless": true
     },
     {
@@ -47,7 +47,7 @@
       "source_ami": "ami-9ef001e9",
       "instance_type": "m3.medium",
       "ssh_username": "admin",
-      "ami_name": "debian-7-amd64/plain {{timestamp}}",
+      "ami_name": "debian-7-amd64-plain {{timestamp}}",
       "ami_description": "https://github.com/cargomedia/vagrant-boxes",
       "ami_groups": ["all"],
       "ami_regions": ["us-east-1"],

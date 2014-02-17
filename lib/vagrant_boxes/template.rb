@@ -16,7 +16,7 @@ module VagrantBoxes
     end
 
     def name
-      path_relative.sub(/.json$/, '').to_s
+      path_relative.sub(/.json$/, '').to_s.sub('/', '-')
     end
 
     def data
@@ -25,7 +25,7 @@ module VagrantBoxes
 
     def output_path(builder)
       box_path = data['post-processors'][0]['output']
-      box_path = box_path.sub('{{.Provider}}', builder)
+      box_path = box_path.sub('{{.BuildName}}', builder)
       File.join(File.dirname(path), box_path).to_s
     end
 
@@ -41,6 +41,17 @@ module VagrantBoxes
         FileUtils.mkdir_p File.dirname(output_path(builder))
       end
       exec(['packer', 'build', "-only=#{builders.join(',')}", path])
+    end
+
+    def upload!(builders, s3_url)
+      builders ||= builder_list
+      builders.each do |builder|
+        box_path = output_path(builder)
+        s3_path = "#{builder}/#{name}.box"
+
+        puts "s3cmd put #{box_path} #{s3_url}#{s3_path}"
+        puts "s3cmd setacl --acl-public #{s3_url}#{s3_path}"
+      end
     end
 
     def exec(command)

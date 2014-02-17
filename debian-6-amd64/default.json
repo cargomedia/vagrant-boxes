@@ -37,14 +37,14 @@
         ["modifyvm", "{{.Name}}", "--memory", "8192"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"]
       ],
-      "vm_name": "debian-6-amd64",
+      "vm_name": "debian-6-amd64-default",
       "headless": true
     }
   ],
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "artifacts/{{.BuildName}}/debian-6-amd64.box",
+      "output": "artifacts/{{.BuildName}}/debian-6-amd64-default.box",
       "keep_input_artifact": true
     }
   ],

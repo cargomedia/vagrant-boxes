@@ -27,15 +27,7 @@ namespace :upload do
   environment.find_templates.each do |template|
     desc 'Upload box'
     task template.name do |t|
-      raise 'Uploading is only supported for virtualbox-builder' if @builder != 'virtualbox'
-      box_path = template.output_path(@builder)
-      s3_path = File.basename(box_path)
-
-      commands = []
-      commands << "cd #{File.dirname(template.path)}"
-      commands << "s3cmd put #{box_path} #{@s3_url}#{s3_path}"
-      commands << "s3cmd setacl --acl-public #{@s3_url}#{s3_path}"
-      system commands.join(' && ')
+      template.upload!(builders, 's3://s3.cargomedia.ch/vagrant-boxes/')
     end
   end
 end

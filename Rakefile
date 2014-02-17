@@ -2,10 +2,6 @@ $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 
 require 'rake'
 require 'rspec/core/rake_task'
-require 'json'
-require 'pathname'
-require 'fileutils'
-
 require 'vagrant_boxes'
 
 @s3_url = 's3://s3.cargomedia.ch/vagrant-boxes/'
@@ -43,7 +39,7 @@ namespace :spec do
       File.delete('spec/current.box') if File.exists?('spec/current.box')
       File.symlink(box_path, 'spec/current.box')
 
-      if 'plain' == File.basename(template.name)
+      if File.basename(template.name).match(/plain$/)
         t.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb')
       else
         t.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb', 'spec/git.rb', 'spec/ruby.rb', 'spec/puppet.rb')

@@ -1,7 +1,11 @@
 Vagrant boxes
 =============
 Generate [Vagrant](http://www.vagrantup.com/) boxes with [packer](http://www.packer.io/).
-The `-plain` versions do not contain "git", "puppet" or "ruby".
+
+There are three flavors available:
+- `*-plain`: Minimalistic Debian with Virtualbox-additions where applicable.
+- `*-default`: Like above, plus `git`, `rsync`, `ruby` and `puppet`.
+- `*-cm`: Like above, plus [CM framework dependencies](https://github.com/cargomedia/puppet-cm).
 
 Available Virtualbox images
 ---------------------------
@@ -27,8 +31,9 @@ Available Amazon Machine Images (AMI)
 Based on [official Debian AMIs](https://wiki.debian.org/Cloud/AmazonEC2Image/Wheezy).
 Available regions: `eu-west-1`, `us-east-1`.
 
-- debian-7-amd64: `http://vagrant-boxes.cargomedia.ch/aws/debian-7-amd64-default.box`
 - debian-7-amd64-plain: `http://vagrant-boxes.cargomedia.ch/aws/debian-7-amd64-plain.box`
+- debian-7-amd64-default: `http://vagrant-boxes.cargomedia.ch/aws/debian-7-amd64-default.box`
+- debian-7-amd64-cm: `http://vagrant-boxes.cargomedia.ch/aws/debian-7-amd64-cm.box`
 
 Example `Vagrantfile` (using the [vagrant AWS provider plugin](https://github.com/mitchellh/vagrant-aws)):
 ```ruby

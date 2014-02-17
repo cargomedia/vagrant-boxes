@@ -1,6 +1,8 @@
 {
 	"builders": [
 		{
+			"name": "virtualbox",
+			"type": "virtualbox-iso",
 			"boot_command": [
 				"<esc><wait>",
 				"install ",
@@ -30,7 +32,6 @@
 			"ssh_port": 22,
 			"ssh_username": "vagrant",
 			"ssh_wait_timeout": "10000s",
-			"type": "virtualbox-iso",
 			"virtualbox_version_file": ".vbox_version",
 			"vboxmanage": [
 				["modifyvm", "{{.Name}}", "--memory", "8192"],
@@ -41,25 +42,28 @@
 	],
 	"post-processors": [
 		{
-			"output": "debian-6-amd64.box",
-			"type": "vagrant"
+			"type": "vagrant",
+			"output": "artifacts/{{.Provider}}/debian-6-amd64.box",
+			"keep_input_artifact": true
 		}
 	],
 	"provisioners": [
 		{
 			"override": {
-				"virtualbox-iso": {
+				"virtualbox": {
 					"execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
 				}
 			},
 			"scripts": [
 				"scripts/base.sh",
-				"scripts/vagrant.sh",
 				"scripts/virtualbox.sh",
+				"scripts/virtualbox-vagrant.sh",
 				"scripts/git.sh",
+				"scripts/rsync.sh",
 				"scripts/ruby.sh",
 				"scripts/puppet.sh",
-				"scripts/cleanup.sh"
+				"scripts/cleanup.sh",
+				"scripts/virtualbox-cleanup.sh"
 			],
 			"type": "shell"
 		}

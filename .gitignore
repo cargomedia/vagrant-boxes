@@ -1,3 +1,4 @@
+/spec/current.box
 packer_cache/
 output-virtualbox/
-*.box
+artifacts/

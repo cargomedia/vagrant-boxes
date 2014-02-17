@@ -6,7 +6,7 @@ apt-get -y install curl unzip
 apt-get clean
 
 # Tweak sshd to prevent DNS resolution (speed up logins)
-echo 'UseDNS no' >> /etc/ssh/sshd_config
+printf '\nUseDNS no\n' >> /etc/ssh/sshd_config
 
 # Remove 5s grub timeout to speed up booting
 cat <<EOF > /etc/default/grub

@@ -10,6 +10,7 @@ require 'vagrant_boxes'
 
 @s3_url = 's3://s3.cargomedia.ch/vagrant-boxes/'
 @builder = ENV['builder'] || 'virtualbox'
+builders = ENV.has_key?('builder') ? [ENV['builder']] : nil
 
 environment = VagrantBoxes::Environment.new(File.dirname(__FILE__))
 
@@ -17,9 +18,7 @@ namespace :build do
   environment.find_templates.each do |template|
     desc 'Build box'
     task template.name do |t|
-      artifacts_dir = File.dirname(template.output_path(@builder))
-      FileUtils.mkdir_p artifacts_dir
-      template.exec("packer build -only=#{@builder} #{File.basename(template.path)}")
+      template.build!(builders)
     end
   end
 end

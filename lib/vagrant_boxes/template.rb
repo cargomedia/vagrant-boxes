@@ -4,6 +4,7 @@ module VagrantBoxes
 
     attr_accessor :environment
     attr_accessor :path
+    attr_accessor :data
 
     def initialize(environment, path)
       @environment = environment
@@ -18,11 +19,28 @@ module VagrantBoxes
       path_relative.sub(/.json$/, '').to_s
     end
 
+    def data
+      @data ||= JSON.parse(IO.read(path))
+    end
+
     def output_path(builder)
-      template_data = JSON.parse(IO.read(path))
-      box_path = template_data['post-processors'][0]['output']
-      box_path.sub!('{{.Provider}}', builder)
+      box_path = data['post-processors'][0]['output']
+      box_path = box_path.sub('{{.Provider}}', builder)
       File.join(File.dirname(path), box_path).to_s
+    end
+
+    def builder_list
+      data['builders'].map do |builder|
+        builder['name'] || builder['type']
+      end
+    end
+
+    def build!(builders = nil)
+      builders ||= builder_list
+      builders.each do |builder|
+        FileUtils.mkdir_p File.dirname(output_path(builder))
+      end
+      exec(['packer', 'build', "-only=#{builders.join(',')}", path])
     end
 
     def exec(command)

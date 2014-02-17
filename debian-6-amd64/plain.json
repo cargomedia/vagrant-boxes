@@ -50,11 +50,7 @@
   ],
   "provisioners": [
     {
-      "override": {
-        "virtualbox": {
-          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
-        }
-      },
+      "type": "shell",
       "scripts": [
         "scripts/base.sh",
         "scripts/virtualbox.sh",
@@ -62,7 +58,12 @@
         "scripts/cleanup.sh",
         "scripts/virtualbox-cleanup.sh"
       ],
-      "type": "shell"
+      "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'",
+      "override": {
+        "virtualbox": {
+          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
+        }
+      }
     }
   ]
 }

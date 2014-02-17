@@ -41,7 +41,7 @@
       "headless": true
     },
     {
-      "name": "aws",
+      "name": "aws-eu-west-1",
       "type": "amazon-ebs",
       "region": "eu-west-1",
       "source_ami": "ami-9ef001e9",
@@ -50,7 +50,18 @@
       "ami_name": "debian-7-amd64/default {{timestamp}}",
       "ami_description": "https://github.com/cargomedia/vagrant-boxes",
       "ami_groups": ["all"],
-      "ami_regions": ["us-east-1"],
+      "ssh_timeout": "5m"
+    },
+    {
+      "name": "aws-us-east-1",
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "source_ami": "ami-9ef001e9",
+      "instance_type": "m3.medium",
+      "ssh_username": "admin",
+      "ami_name": "debian-7-amd64/default {{timestamp}}",
+      "ami_description": "https://github.com/cargomedia/vagrant-boxes",
+      "ami_groups": ["all"],
       "ssh_timeout": "5m"
     }
   ],
@@ -63,14 +74,7 @@
   ],
   "provisioners": [
     {
-      "override": {
-        "virtualbox": {
-          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
-        },
-        "aws": {
-          "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'"
-        }
-      },
+      "type": "shell",
       "scripts": [
         "scripts/base.sh",
         "scripts/virtualbox.sh",
@@ -82,7 +86,12 @@
         "scripts/cleanup.sh",
         "scripts/virtualbox-cleanup.sh"
       ],
-      "type": "shell"
+      "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'",
+      "override": {
+        "virtualbox": {
+          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
+        }
+      }
     }
   ]
 }

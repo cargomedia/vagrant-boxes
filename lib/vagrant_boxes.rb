@@ -4,6 +4,7 @@ module VagrantBoxes
   require 'json'
   require 'pathname'
   require 'fileutils'
+  require 'aws-sdk'
 
   require 'vagrant_boxes/environment'
   require 'vagrant_boxes/template'

@@ -40,24 +40,32 @@ module VagrantBoxes
       builders.each do |builder|
         FileUtils.mkdir_p File.dirname(output_path(builder))
       end
-      exec(['packer', 'build', "-only=#{builders.join(',')}", path])
+      env = {:AWS_ACCESS_KEY => environment.aws_key_id, :AWS_SECRET_KEY => environment.aws_key_secret}
+      exec(['packer', 'build', "-only=#{builders.join(',')}", path], env)
     end
 
-    def upload!(builders, s3_url)
+    def upload!(builders, s3_bucket, s3_endpoint)
       builders ||= builder_list
+
+      s3 = AWS::S3.new(
+          :access_key_id => environment.aws_key_id,
+          :secret_access_key => environment.aws_key_secret,
+          :s3_endpoint => s3_endpoint,
+      )
+
       builders.each do |builder|
         box_path = output_path(builder)
         s3_path = "#{builder}/#{name}.box"
-
-        exec(['s3cmd', 'put', box_path, "#{s3_url}#{s3_path}"])
-        exec(['s3cmd', 'setacl', '--acl-public', "#{s3_url}#{s3_path}"])
+        puts "Uploading #{s3_path}..."
+        s3.buckets[s3_bucket].objects[s3_path].write(:file => box_path)
       end
+      Process.wait
     end
 
-    def exec(command)
+    def exec(command, env = {})
       output = ''
       Dir.chdir(File.dirname(path)) do
-        io = IO.popen(command, :err => [:child, :out]).each do |line|
+        io = IO.popen(env, command, :err => [:child, :out]).each do |line|
           puts line
           output += line
         end

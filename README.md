@@ -61,5 +61,5 @@ Build AMI images
 ----------------
 Build AMIs based on [official Debian AMIs](https://wiki.debian.org/Cloud/AmazonEC2Image/Wheezy).
 ```
-rake build:debian-7-amd64/default builder=aws AWS_ACCESS_KEY='<access-key>' AWS_SECRET_KEY='<secret-key>'
+rake build:debian-7-amd64/default builder=aws aws_key_id='<access-key>' aws_key_secret='<secret-key>'
 ```

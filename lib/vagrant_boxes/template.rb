@@ -40,7 +40,7 @@ module VagrantBoxes
       builders.each do |builder|
         FileUtils.mkdir_p File.dirname(output_path(builder))
       end
-      env = {:AWS_ACCESS_KEY => environment.aws_key_id, :AWS_SECRET_KEY => environment.aws_key_secret}
+      env = {'AWS_ACCESS_KEY' => environment.aws_key_id, 'AWS_SECRET_KEY' => environment.aws_key_secret}
       exec(['packer', 'build', "-only=#{builders.join(',')}", path], env)
     end
 

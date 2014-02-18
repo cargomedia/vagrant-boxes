@@ -37,7 +37,8 @@
         ["modifyvm", "{{.Name}}", "--memory", "8192"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"]
       ],
-      "vm_name": "debian-7-amd64"
+      "vm_name": "debian-7-amd64-default",
+      "headless": true
     },
     {
       "name": "aws",
@@ -46,7 +47,7 @@
       "source_ami": "ami-9ef001e9",
       "instance_type": "m3.medium",
       "ssh_username": "admin",
-      "ami_name": "debian-7-amd64/default {{timestamp}}",
+      "ami_name": "debian-7-amd64-default {{timestamp}}",
       "ami_description": "https://github.com/cargomedia/vagrant-boxes",
       "ami_groups": ["all"],
       "ami_regions": ["us-east-1"],
@@ -56,20 +57,13 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "artifacts/{{.Provider}}/debian-7-amd64.box",
+      "output": "artifacts/{{.BuildName}}/debian-7-amd64-default.box",
       "keep_input_artifact": true
     }
   ],
   "provisioners": [
     {
-      "override": {
-        "virtualbox": {
-          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
-        },
-        "aws": {
-          "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'"
-        }
-      },
+      "type": "shell",
       "scripts": [
         "scripts/base.sh",
         "scripts/virtualbox.sh",
@@ -81,7 +75,12 @@
         "scripts/cleanup.sh",
         "scripts/virtualbox-cleanup.sh"
       ],
-      "type": "shell"
+      "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'",
+      "override": {
+        "virtualbox": {
+          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
+        }
+      }
     }
   ]
 }

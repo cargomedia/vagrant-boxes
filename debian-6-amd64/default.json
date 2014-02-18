@@ -37,23 +37,20 @@
         ["modifyvm", "{{.Name}}", "--memory", "8192"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"]
       ],
-      "vm_name": "debian-6-amd64"
+      "vm_name": "debian-6-amd64-default",
+      "headless": true
     }
   ],
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "artifacts/{{.Provider}}/debian-6-amd64.box",
+      "output": "artifacts/{{.BuildName}}/debian-6-amd64-default.box",
       "keep_input_artifact": true
     }
   ],
   "provisioners": [
     {
-      "override": {
-        "virtualbox": {
-          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
-        }
-      },
+      "type": "shell",
       "scripts": [
         "scripts/base.sh",
         "scripts/virtualbox.sh",
@@ -65,7 +62,12 @@
         "scripts/cleanup.sh",
         "scripts/virtualbox-cleanup.sh"
       ],
-      "type": "shell"
+      "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'",
+      "override": {
+        "virtualbox": {
+          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
+        }
+      }
     }
   ]
 }

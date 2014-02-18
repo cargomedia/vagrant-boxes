@@ -10,10 +10,10 @@ There are three flavors available:
 Available Virtualbox images
 ---------------------------
 
-- debian-6-amd64: `http://vagrant-boxes.cargomedia.ch/virtualbox/debian-6-amd64-default.box`
 - debian-6-amd64-plain: `http://vagrant-boxes.cargomedia.ch/virtualbox/debian-6-amd64-plain.box`
-- debian-7-amd64: `http://vagrant-boxes.cargomedia.ch/virtualbox/debian-7-amd64-default.box`
+- debian-6-amd64-default: `http://vagrant-boxes.cargomedia.ch/virtualbox/debian-6-amd64-default.box`
 - debian-7-amd64-plain: `http://vagrant-boxes.cargomedia.ch/virtualbox/debian-7-amd64-plain.box`
+- debian-7-amd64-default: `http://vagrant-boxes.cargomedia.ch/virtualbox/debian-7-amd64-default.box`
 - debian-7-amd64-cm: `http://vagrant-boxes.cargomedia.ch/virtualbox/debian-7-amd64-cm.box`
 
 Example `Vagrantfile`:

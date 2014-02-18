@@ -9,7 +9,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-cm.git
   path: modules/cm
   ref: master
-  sha: da728a3a857848267857ab6a80770e9a0e393948
+  sha: c047a2e5f102e1f7c6425b06fddb7873fe153fad
   specs:
     cm (0.0.1)
       bipbip (>= 0)
@@ -32,7 +32,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/apache2
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     apache2 (0.0.1)
       monit (>= 0)
@@ -41,7 +41,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/apt
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     apt (0.0.1)
 
@@ -49,7 +49,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/bipbip
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     bipbip (0.0.1)
       monit (>= 0)
@@ -59,7 +59,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/build
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     build (0.0.1)
 
@@ -67,7 +67,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/cgi-fcgi
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     cgi-fcgi (0.0.1)
 
@@ -75,16 +75,24 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/composer
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     composer (0.0.1)
       php5 (>= 0)
 
 GIT
   remote: git@github.com:cargomedia/puppet-packages.git
+  path: modules/database
+  ref: master
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
+  specs:
+    database (0.0.1)
+
+GIT
+  remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/deb-multimedia
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     deb-multimedia (0.0.1)
       apt (>= 0)
@@ -93,7 +101,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/elasticsearch
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     elasticsearch (0.0.1)
       helper (>= 0)
@@ -104,7 +112,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/ffmpeg
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     ffmpeg (0.0.1)
       deb-multimedia (>= 0)
@@ -116,7 +124,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/foreman
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     foreman (0.0.1)
       ruby (>= 0)
@@ -125,7 +133,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/gearmand
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     gearmand (0.0.1)
       bipbip (>= 0)
@@ -136,7 +144,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/helper
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     helper (0.0.1)
 
@@ -144,7 +152,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/java
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     java (0.0.1)
 
@@ -152,7 +160,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/memcached
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     memcached (0.0.1)
       bipbip (>= 0)
@@ -162,7 +170,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/monit
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     monit (0.0.1)
 
@@ -170,10 +178,11 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/mysql
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     mysql (0.0.1)
       bipbip (>= 0)
+      database (>= 0)
       monit (>= 0)
       sysctl (>= 0)
       ulimit (>= 0)
@@ -182,7 +191,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/nginx
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     nginx (0.0.1)
       apt (>= 0)
@@ -192,7 +201,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/nodejs
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     nodejs (0.0.1)
       build (>= 0)
@@ -202,7 +211,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/php5
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     php5 (0.0.1)
       apache2 (>= 0)
@@ -217,7 +226,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/phpunit
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     phpunit (0.0.1)
       php5 (>= 0)
@@ -226,7 +235,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/redis
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     redis (0.0.1)
       bipbip (>= 0)
@@ -238,7 +247,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/ruby
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     ruby (0.0.1)
       cgi-fcgi (>= 0)
@@ -249,7 +258,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/socket-redis
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     socket-redis (0.0.1)
       monit (>= 0)
@@ -259,7 +268,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/sysctl
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     sysctl (0.0.1)
 
@@ -267,7 +276,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/uglify
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     uglify (0.0.1)
       nodejs (>= 0)
@@ -276,7 +285,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/ulimit
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     ulimit (0.0.1)
 
@@ -284,7 +293,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/unzip
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     unzip (0.0.1)
 
@@ -292,7 +301,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/wowza
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     wowza (0.0.1)
       ffmpeg (>= 0)
@@ -304,7 +313,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/x264
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     x264 (0.0.1)
       build (>= 0)
@@ -315,7 +324,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/yasm
   ref: master
-  sha: 4c6d2e2630f412c0696a90794925c176db114891
+  sha: c8ce07be9b9648df982bfc027b32bd7410903740
   specs:
     yasm (0.0.1)
       build (>= 0)

@@ -1,0 +1,3 @@
+mod 'cm',
+  :git => 'git@github.com:cargomedia/puppet-cm.git',
+  :path => 'modules/cm'

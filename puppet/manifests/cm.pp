@@ -1,7 +1,7 @@
 node default {
 
+  include 'cm::application'
   include 'cm::services'
-
-  cm::application{'dummy':}
+  include 'wowza'
 
 }

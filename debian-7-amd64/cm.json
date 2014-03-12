@@ -45,7 +45,7 @@
       "type": "amazon-ebs",
       "region": "eu-west-1",
       "source_ami": "ami-9ef001e9",
-      "instance_type": "m3.medium",
+      "instance_type": "m3.large",
       "ssh_username": "admin",
       "ami_name": "debian-7-amd64-cm {{timestamp}}",
       "ami_description": "https://github.com/cargomedia/vagrant-boxes",

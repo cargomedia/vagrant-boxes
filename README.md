@@ -19,7 +19,7 @@ Available Virtualbox images
 Example `Vagrantfile`:
 ```ruby
 Vagrant.configure('2') do |config|
-  config.vm.box = 'debian-7-amd64'
+  config.vm.box = 'debian-7-amd64-default'
 
   config.vm.provider :virtualbox do |virtualbox, override|
     override.vm.box_url = 'http://vagrant-boxes.cargomedia.ch/virtualbox/debian-7-amd64-default.box'
@@ -39,7 +39,7 @@ Available regions: `eu-west-1`, `us-east-1`.
 Example `Vagrantfile` (using the [vagrant AWS provider plugin](https://github.com/mitchellh/vagrant-aws)):
 ```ruby
 Vagrant.configure('2') do |config|
-  config.vm.box = 'debian-7-amd64'
+  config.vm.box = 'debian-7-amd64-default'
 
   config.vm.provider :aws do |aws, override|
     override.vm.box_url = 'http://vagrant-boxes.cargomedia.ch/aws/debian-7-amd64-default.box'

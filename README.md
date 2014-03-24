@@ -50,6 +50,17 @@ Vagrant.configure('2') do |config|
     aws.secret_access_key = '<aws-secret-key>'
     aws.keypair_name = '<keypair-name>'
     aws.security_groups = '<security-group-id>'
+
+    aws.block_device_mapping = [
+      {
+        'DeviceName' => '/dev/sda',
+        'VirtualName' => 'root',
+        'Ebs.VolumeSize' => 100,
+        'Ebs.DeleteOnTermination' => true,
+        'Ebs.VolumeType' => 'io1',
+        'Ebs.Iops' => 2000
+      }
+    ]
   end
 end
 ```

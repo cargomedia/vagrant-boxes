@@ -5,9 +5,12 @@ module VagrantBoxes
   require 'pathname'
   require 'fileutils'
   require 'aws-sdk'
+  require 'rest_client'
 
   require 'vagrant_boxes/environment'
   require 'vagrant_boxes/template'
+  require 'vagrant_boxes/aws'
+  require 'vagrant_boxes/vagrant_cloud'
 
   def self.logger
     @logger || Logger.new(STDOUT)

@@ -40,18 +40,14 @@ module VagrantBoxes
       builders.each do |builder|
         FileUtils.mkdir_p File.dirname(output_path(builder))
       end
-      env = {'AWS_ACCESS_KEY' => environment.aws_key_id, 'AWS_SECRET_KEY' => environment.aws_key_secret}
+      env = {'AWS_ACCESS_KEY' => environment.aws.key_id, 'AWS_SECRET_KEY' => environment.aws.key_secret}
       exec(['packer', 'build', "-only=#{builders.join(',')}", path], env)
     end
 
     def upload!(builders, s3_bucket, s3_endpoint)
       builders ||= builder_list
 
-      s3 = AWS::S3.new(
-          :access_key_id => environment.aws_key_id,
-          :secret_access_key => environment.aws_key_secret,
-          :s3_endpoint => s3_endpoint,
-      )
+      s3 = environment.aws.s3(s3_endpoint)
 
       builders.each do |builder|
         box_path = output_path(builder)

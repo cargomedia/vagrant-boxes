@@ -3,13 +3,13 @@ module VagrantBoxes
   class Environment
 
     attr_accessor :path
-    attr_accessor :aws_key_id
-    attr_accessor :aws_key_secret
+    attr_accessor :aws
+    attr_accessor :vagrant_cloud
 
-    def initialize(path, aws_key_id, aws_key_secret)
+    def initialize(path, aws, vagrant_cloud)
       @path = path
-      @aws_key_id = aws_key_id
-      @aws_key_secret = aws_key_secret
+      @aws = aws
+      @vagrant_cloud = vagrant_cloud
     end
 
     def find_templates

@@ -10,9 +10,12 @@ GEM
     json (1.8.1)
     mini_portile (0.5.2)
     net-ssh (2.7.0)
+    netrc (0.7.7)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     rake (10.1.0)
+    rest_client (1.7.3)
+      netrc (~> 0.7.7)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -33,4 +36,5 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk
   rake
+  rest_client
   serverspec

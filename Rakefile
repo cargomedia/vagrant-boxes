@@ -7,10 +7,10 @@ require 'vagrant_boxes'
 @s3_url = 's3://s3.cargomedia.ch/vagrant-boxes/'
 @builder = ENV['builder'] || 'virtualbox'
 builders = ENV.has_key?('builder') ? [ENV['builder']] : nil
-aws_key_id = ENV['aws_key_id']
-aws_key_secret = ENV['aws_key_secret']
 
-environment = VagrantBoxes::Environment.new(File.dirname(__FILE__), aws_key_id, aws_key_secret)
+aws = VagrantBoxes::Aws.new(ENV['aws_key_id'], ENV['aws_key_secret'])
+vagrant_cloud = VagrantBoxes::VagrantCloud.new(ENV['vagrant_cloud_username'], ENV['vagrant_cloud_access_token'])
+environment = VagrantBoxes::Environment.new(File.dirname(__FILE__), aws, vagrant_cloud)
 
 namespace :build do
   environment.find_templates.each do |template|

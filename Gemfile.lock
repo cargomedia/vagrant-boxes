@@ -29,6 +29,8 @@ GEM
       net-ssh
       rspec (>= 2.13.0)
     uuidtools (2.1.4)
+    vagrant_cloud (0.1.0)
+      rest_client
 
 PLATFORMS
   ruby
@@ -36,5 +38,5 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk
   rake
-  rest_client
   serverspec
+  vagrant_cloud

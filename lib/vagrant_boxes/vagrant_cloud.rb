@@ -24,6 +24,10 @@ module VagrantBoxes
       request('put', "/box/#{username}/#{name}", {:box => box})
     end
 
+    def box_delete(name)
+      request('delete', "/box/#{username}/#{name}")
+    end
+
     def box_ensure(name, description)
       begin
         box = box_get(name)
@@ -34,10 +38,6 @@ module VagrantBoxes
         box = box_update(name, description)
       end
       box
-    end
-
-    def box_delete(name)
-      request('delete', "/box/#{username}/#{name}")
     end
 
     private

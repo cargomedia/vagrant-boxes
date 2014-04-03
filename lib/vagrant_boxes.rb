@@ -10,7 +10,8 @@ module VagrantBoxes
   require 'vagrant_boxes/environment'
   require 'vagrant_boxes/template'
   require 'vagrant_boxes/aws'
-  require 'vagrant_boxes/vagrant_cloud'
+  require 'vagrant_cloud/account'
+  require 'vagrant_cloud/box'
 
   def self.logger
     @logger || Logger.new(STDOUT)

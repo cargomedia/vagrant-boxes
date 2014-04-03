@@ -9,7 +9,7 @@ require 'vagrant_boxes'
 builders = ENV.has_key?('builder') ? [ENV['builder']] : nil
 
 aws = VagrantBoxes::Aws.new(ENV['aws_key_id'], ENV['aws_key_secret'])
-vagrant_cloud = VagrantBoxes::VagrantCloud.new(ENV['vagrant_cloud_username'], ENV['vagrant_cloud_access_token'])
+vagrant_cloud = VagrantCloud::Account.new(ENV['vagrant_cloud_username'], ENV['vagrant_cloud_access_token'])
 environment = VagrantBoxes::Environment.new(File.dirname(__FILE__), aws, vagrant_cloud)
 
 namespace :build do
@@ -25,7 +25,9 @@ namespace :upload do
   environment.find_templates.each do |template|
     desc 'Upload box'
     task template.name do |t|
-      template.upload!(builders, 'vagrant-boxes.cargomedia.ch', 's3-eu-west-1.amazonaws.com')
+      #template.upload!(builders, 'vagrant-boxes.cargomedia.ch', 's3-eu-west-1.amazonaws.com')
+      p vagrant_cloud.ensure_box('foo6', 'njam')
+      #p vagrant_cloud.version_ensure('foo4', '0.0.3', 'njam')
     end
   end
 end

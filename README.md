@@ -73,17 +73,24 @@ cd puppet
 librarian-puppet install
 ```
 
-Build a box:
+Rake parameters:
+- builder: A list of builders to use (Default: all builders)
+- aws_key_id: AWS key id
+- aws_key_secret: AWS key secret
+- vagrant_cloud_username: Vagrant Cloud username
+- vagrant_cloud_access_token: Vagrant Cloud access token
+
+Build all boxes:
 ```
-rake build:debian-7-amd64-default [aws_key_id=<access-key>] [aws_key_secret=<secret-key>] [builder=<builder-only>]
+rake build
 ```
 
 Run serverspec tests (virtualbox build only!):
 ```
-rake spec:debian-7-amd64-default
+rake spec
 ```
 
-Upload box to S3:
+Upload boxes to S3:
 ```
-rake upload:debian-7-amd64-default [aws_key_id=<access-key>] [aws_key_secret=<secret-key>] [builder=<builder-only>]
+rake upload
 ```

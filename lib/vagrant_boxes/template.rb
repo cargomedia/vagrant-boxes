@@ -29,6 +29,12 @@ module VagrantBoxes
       File.join(File.dirname(path), box_path).to_s
     end
 
+    def url_path(builder, version)
+      raise 'Missing version' unless version
+      raise 'Missing builder' unless builder
+      "#{builder}/#{name}-#{version}.box"
+    end
+
     def builder_list
       data['builders'].map do |builder|
         builder['name'] || builder['type']
@@ -44,19 +50,39 @@ module VagrantBoxes
       exec(['packer', 'build', "-only=#{builders.join(',')}", path], env)
     end
 
-    def upload!(builders, s3_bucket, s3_endpoint)
+    def upload!(builders, version, s3_bucket, s3_endpoint)
       builders ||= builder_list
-
       s3 = environment.aws.s3(s3_endpoint)
 
       builders.each do |builder|
         box_path = output_path(builder)
-        s3_path = "#{builder}/#{name}.box"
-        puts "Uploading #{s3_path}..."
+        s3_path = url_path(builder, version)
+        puts "Uploading #{s3_path} to S3..."
         s3_object = s3.buckets[s3_bucket].objects[s3_path]
         s3_object.write(:file => box_path)
         s3_object.acl = :public_read
       end
+    end
+
+    def release_vagrant_cloud!(builders, version, url_base)
+      builders ||= builder_list
+
+      builders.each do |builder|
+        url = url_base + url_path(builder, version)
+        version.ensure_provider(builder, url)
+      end
+      version.release
+    end
+
+    def next_version
+      box = environment.vagrant_cloud.ensure_box(name)
+      versions = box.versions
+      if versions.empty?
+        version_name = '0.1.0'
+      else
+        version_name = Gem::Version.new(versions.first.version).bump.to_s + '.0'
+      end
+      box.create_version(version_name)
     end
 
     def exec(command, env = {})

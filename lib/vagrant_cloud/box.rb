@@ -20,6 +20,10 @@ module VagrantCloud
       data['short_description']
     end
 
+    def versions
+      data['versions'].map { |data| Version.new(self, data['number'], data) }
+    end
+
     def data
       @data ||= account.request('get', "/box/#{account.username}/#{name}")
     end
@@ -31,6 +35,28 @@ module VagrantCloud
 
     def delete
       account.request('delete', "/box/#{account.username}/#{name}")
+    end
+
+    def get_version(number, data = nil)
+      Version.new(self, number, data)
+    end
+
+    def create_version(name, description = nil)
+      params = {:version => name}
+      params[:description] = description if description
+      data = account.request('post', "/box/#{account.username}/#{self.name}/versions", {:version => params})
+      get_version(data['number'], data)
+    end
+
+    def ensure_version(name, description = nil)
+      version = versions.select{ |version| version.version == name }.first
+      unless version
+        version = create_version(name, description)
+      end
+      if description and (description != version.description)
+        version.update(description)
+      end
+      version
     end
 
   end

@@ -12,6 +12,7 @@ module VagrantBoxes
   require 'vagrant_boxes/aws'
   require 'vagrant_cloud/account'
   require 'vagrant_cloud/box'
+  require 'vagrant_cloud/version'
 
   def self.logger
     @logger || Logger.new(STDOUT)

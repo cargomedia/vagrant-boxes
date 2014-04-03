@@ -15,10 +15,10 @@ module VagrantCloud
     end
 
     def create_box(name, description = nil)
-      data = {:name => name}
-      data[:description] = description if description
-      data[:short_description] = description if description
-      data = request('post', '/boxes', {:box => data})
+      params = {:name => name}
+      params[:description] = description if description
+      params[:short_description] = description if description
+      data = request('post', '/boxes', {:box => params})
       get_box(name, data)
     end
 

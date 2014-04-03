@@ -80,17 +80,8 @@ Rake parameters:
 - vagrant_cloud_username: Vagrant Cloud username
 - vagrant_cloud_access_token: Vagrant Cloud access token
 
-Build all boxes:
 ```
-rake build
-```
-
-Run serverspec tests (virtualbox build only!):
-```
-rake spec
-```
-
-Upload boxes to S3:
-```
-rake upload
+rake build   # Build all boxes
+rake spec    # Run serverspec tests (virtualbox build only!)
+rake upload  # Upload boxes to S3 and Vagrant Cloud
 ```

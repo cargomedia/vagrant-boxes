@@ -17,7 +17,7 @@ aws = VagrantBoxes::Aws.new(aws_key_id, aws_key_secret)
 vagrant_cloud = VagrantCloud::Account.new(vagrant_cloud_username, vagrant_cloud_access_token)
 environment = VagrantBoxes::Environment.new(File.dirname(__FILE__), aws, vagrant_cloud)
 
-desc 'Build boxes'
+desc 'Build all boxes'
 task :build do |t|
   environment.find_templates.each do |template|
     puts "Building #{template.name}..."
@@ -26,7 +26,7 @@ task :build do |t|
 end
 
 
-desc 'Upload boxes'
+desc 'Upload boxes to S3 and Vagrant Cloud'
 task :upload do |t|
   environment.find_templates.each do |template|
     puts "Uploading #{template.name}..."
@@ -35,7 +35,7 @@ task :upload do |t|
 end
 
 
-desc 'Validate boxes'
+desc 'Run serverspec tests (virtualbox build only!)'
 task :spec do |t|
   environment.find_templates.each do |template|
     puts "Validating #{template.name}..."

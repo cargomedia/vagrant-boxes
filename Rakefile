@@ -52,7 +52,7 @@ task :release do |t|
     environment.add_rollback(Proc.new { version.delete })
     puts "Releasing #{template.name} version #{version}..."
     begin
-      #template.upload!(builders, version, s3_bucket, s3_endpoint)
+      template.upload!(builders, version, s3_bucket, s3_endpoint)
       template.release_vagrant_cloud!(builders, version, url_base)
     rescue Exception => e
       environment.rollback

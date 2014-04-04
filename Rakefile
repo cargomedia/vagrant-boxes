@@ -49,8 +49,14 @@ desc 'Release boxes to S3 and Vagrant Cloud'
 task :release do |t|
   environment.find_templates.each do |template|
     version = template.next_version
+    environment.add_rollback(Proc.new { version.delete })
     puts "Releasing #{template.name} version #{version}..."
-    template.upload!(builders, version, s3_bucket, s3_endpoint)
-    template.release_vagrant_cloud!(builders, version, url_base)
+    begin
+      #template.upload!(builders, version, s3_bucket, s3_endpoint)
+      template.release_vagrant_cloud!(builders, version, url_base)
+    rescue Exception => e
+      environment.rollback
+      throw e
+    end
   end
 end

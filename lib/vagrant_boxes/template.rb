@@ -59,6 +59,7 @@ module VagrantBoxes
         s3_path = url_path(builder, version)
         puts "Uploading #{s3_path} to S3..."
         s3_object = s3.buckets[s3_bucket].objects[s3_path]
+        environment.add_rollback(Proc.new { s3_object.delete })
         s3_object.write(:file => box_path)
         s3_object.acl = :public_read
       end

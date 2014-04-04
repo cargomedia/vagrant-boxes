@@ -1,2 +1,2 @@
-mod 'cm',
+mod 'cargomedia/cm',
   :git => 'git@github.com:cargomedia/puppet-cm.git'

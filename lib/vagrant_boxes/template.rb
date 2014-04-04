@@ -67,6 +67,7 @@ module VagrantBoxes
     def release_vagrant_cloud!(builders, version, url_base)
       builders ||= builder_list
 
+      puts "Creating Vagrant Cloud box #{name} version #{version}..."
       builders.each do |builder|
         url = url_base + url_path(builder, version)
         version.ensure_provider(builder, url)

@@ -4,46 +4,59 @@ require 'rake'
 require 'rspec/core/rake_task'
 require 'vagrant_boxes'
 
-@s3_url = 's3://s3.cargomedia.ch/vagrant-boxes/'
-@builder = ENV['builder'] || 'virtualbox'
 builders = ENV.has_key?('builder') ? [ENV['builder']] : nil
 aws_key_id = ENV['aws_key_id']
 aws_key_secret = ENV['aws_key_secret']
+vagrant_cloud_username = ENV['vagrant_cloud_username']
+vagrant_cloud_access_token = ENV['vagrant_cloud_access_token']
+s3_bucket = 'vagrant-boxes.cargomedia.ch'
+s3_endpoint = 's3-eu-west-1.amazonaws.com'
+url_base = 'http://vagrant-boxes.cargomedia.ch/'
 
-environment = VagrantBoxes::Environment.new(File.dirname(__FILE__), aws_key_id, aws_key_secret)
+aws = VagrantBoxes::Aws.new(aws_key_id, aws_key_secret)
+vagrant_cloud = VagrantCloud::Account.new(vagrant_cloud_username, vagrant_cloud_access_token)
+environment = VagrantBoxes::Environment.new(File.dirname(__FILE__), aws, vagrant_cloud)
 
-namespace :build do
+desc 'Build all boxes'
+task :build do |t|
   environment.find_templates.each do |template|
-    desc 'Build box'
-    task template.name do |t|
-      template.build!(builders)
-    end
+    puts "Building #{template.name}..."
+    template.build!(builders)
   end
 end
 
-namespace :upload do
+desc 'Run serverspec tests (virtualbox build only!)'
+task :spec do |t|
   environment.find_templates.each do |template|
-    desc 'Upload box'
-    task template.name do |t|
-      template.upload!(builders, 'vagrant-boxes.cargomedia.ch', 's3-eu-west-1.amazonaws.com')
+    puts "Validating #{template.name}..."
+    task = RSpec::Core::RakeTask.new(template.name)
+    box_path = template.output_path('virtualbox')
+
+    File.delete('spec/current.box') if File.symlink?('spec/current.box')
+    File.symlink(box_path, 'spec/current.box')
+
+    if File.basename(template.name).match(/plain$/)
+      task.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb')
+    else
+      task.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb', 'spec/git.rb', 'spec/ruby.rb', 'spec/puppet.rb')
     end
+
+    task.run_task(true)
   end
 end
 
-namespace :spec do
+desc 'Release boxes to S3 and Vagrant Cloud'
+task :release do |t|
   environment.find_templates.each do |template|
-    desc 'Validate box'
-    RSpec::Core::RakeTask.new(template.name) do |t|
-      box_path = template.output_path('virtualbox')
-
-      File.delete('spec/current.box') if File.exists?('spec/current.box')
-      File.symlink(box_path, 'spec/current.box')
-
-      if File.basename(template.name).match(/plain$/)
-        t.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb')
-      else
-        t.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb', 'spec/git.rb', 'spec/ruby.rb', 'spec/puppet.rb')
-      end
+    version = template.next_version
+    environment.add_rollback(Proc.new { version.delete })
+    puts "Releasing #{template.name} version #{version}..."
+    begin
+      template.upload!(builders, version, s3_bucket, s3_endpoint)
+      template.release_vagrant_cloud!(builders, version, url_base)
+    rescue Exception => e
+      environment.rollback
+      throw e
     end
   end
 end

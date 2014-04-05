@@ -7,7 +7,7 @@ There are three flavors available:
 - `debian-7-amd64-default`: Like above, plus `git`, `rsync`, `ruby` and `puppet`.
 - `debian-7-amd64-cm`: Like above, plus [CM framework dependencies](https://github.com/cargomedia/puppet-cm).
 
-Boxes are built and released on [Vagrant Cloud](https://vagrantcloud.com/) for `virtualbox` and `aws`.
+Boxes are built and released on [Vagrant Cloud](https://vagrantcloud.com/cargomedia) for `virtualbox` and `aws`.
 
 Usage: Virtualbox
 -----------------

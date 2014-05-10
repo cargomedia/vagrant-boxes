@@ -38,5 +38,6 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk
   rake
+  rspec-core
   serverspec
   vagrant_cloud

@@ -70,10 +70,7 @@
         "scripts/git.sh",
         "scripts/rsync.sh",
         "scripts/ruby.sh",
-        "scripts/puppet.sh",
-        "scripts/cleanup.sh",
-        "scripts/cleanup-mongod.sh",
-        "scripts/cleanup-virtualbox.sh"
+        "scripts/puppet.sh"
       ],
       "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'",
       "override": {
@@ -86,6 +83,20 @@
       "type": "puppet-masterless",
       "module_paths": ["../puppet/modules/"],
       "manifest_file": "../puppet/manifests/cm.pp"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/cleanup.sh",
+        "scripts/cleanup-mongod.sh",
+        "scripts/cleanup-virtualbox.sh"
+      ],
+      "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'",
+      "override": {
+        "virtualbox": {
+          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
+        }
+      }
     }
   ]
 }

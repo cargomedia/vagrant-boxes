@@ -6,9 +6,16 @@ GIT
     cargomedia/stdlib (4.1.0)
 
 GIT
+  remote: git://github.com/puppetlabs/puppetlabs-stdlib.git
+  ref: master
+  sha: f0495091551d439f27fc0ef86a9f23b81e1138eb
+  specs:
+    puppetlabs/stdlib (4.2.1)
+
+GIT
   remote: git@github.com:cargomedia/puppet-cm.git
   ref: master
-  sha: 2aa80162aa087f3515a046ee4b415d9cbd4a30e7
+  sha: f97b3c193f95d6c6d1bc4a03266e66b375fd0769
   specs:
     cargomedia/cm (0.0.1)
       cargomedia/bipbip (>= 0)
@@ -32,7 +39,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/apache2
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/apache2 (0.0.1)
       cargomedia/monit (>= 0)
@@ -41,7 +48,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/apt
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/apt (0.0.1)
 
@@ -49,7 +56,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/bipbip
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/bipbip (0.0.1)
       cargomedia/monit (>= 0)
@@ -59,7 +66,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/build
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/build (0.0.1)
 
@@ -67,7 +74,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/cgi-fcgi
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/cgi-fcgi (0.0.1)
 
@@ -75,7 +82,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/composer
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/composer (0.0.1)
       cargomedia/php5 (>= 0)
@@ -84,7 +91,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/database
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/database (0.0.1)
 
@@ -92,7 +99,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/deb-multimedia
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/deb-multimedia (0.0.1)
       cargomedia/apt (>= 0)
@@ -101,7 +108,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/elasticsearch
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/elasticsearch (0.0.1)
       cargomedia/helper (>= 0)
@@ -112,7 +119,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/ffmpeg
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/ffmpeg (0.0.1)
       cargomedia/deb-multimedia (>= 0)
@@ -124,7 +131,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/foreman
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/foreman (0.0.1)
       cargomedia/ruby (>= 0)
@@ -133,10 +140,11 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/gearmand
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/gearmand (0.0.1)
       cargomedia/bipbip (>= 0)
+      cargomedia/build (>= 0)
       cargomedia/helper (>= 0)
       cargomedia/monit (>= 0)
 
@@ -144,7 +152,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/helper
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/helper (0.0.1)
 
@@ -152,7 +160,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/java
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/java (0.0.1)
 
@@ -160,7 +168,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/memcached
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/memcached (0.0.1)
       cargomedia/bipbip (>= 0)
@@ -170,17 +178,18 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/mongodb
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/mongodb (0.0.1)
       cargomedia/apt (>= 0)
       cargomedia/monit (>= 0)
+      puppetlabs/stdlib (>= 0)
 
 GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/monit
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/monit (0.0.1)
 
@@ -188,7 +197,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/mysql
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/mysql (0.0.1)
       cargomedia/bipbip (>= 0)
@@ -201,7 +210,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/nginx
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/nginx (0.0.1)
       cargomedia/apt (>= 0)
@@ -211,7 +220,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/nodejs
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/nodejs (0.0.1)
 
@@ -219,7 +228,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/php5
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/php5 (0.0.1)
       cargomedia/apache2 (>= 0)
@@ -234,7 +243,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/phpunit
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/phpunit (0.0.1)
       cargomedia/php5 (>= 0)
@@ -243,28 +252,28 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/redis
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/redis (0.0.1)
       cargomedia/bipbip (>= 0)
-      cargomedia/build (>= 0)
-      cargomedia/helper (>= 0)
       cargomedia/monit (>= 0)
+      cargomedia/sysctl (>= 0)
 
 GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/ruby
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/ruby (0.0.1)
+      cargomedia/build (>= 0)
       cargomedia/cgi-fcgi (>= 0)
 
 GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/socket-redis
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/socket-redis (0.0.1)
       cargomedia/monit (>= 0)
@@ -274,7 +283,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/sysctl
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/sysctl (0.0.1)
 
@@ -282,7 +291,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/uglify
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/uglify (0.0.1)
       cargomedia/nodejs (>= 0)
@@ -291,7 +300,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/ulimit
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/ulimit (0.0.1)
 
@@ -299,7 +308,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/unzip
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/unzip (0.0.1)
 
@@ -307,7 +316,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/wowza
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/wowza (0.0.1)
       cargomedia/ffmpeg (>= 0)
@@ -319,7 +328,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/x264
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/x264 (0.0.1)
       cargomedia/build (>= 0)
@@ -330,7 +339,7 @@ GIT
   remote: git@github.com:cargomedia/puppet-packages.git
   path: modules/yasm
   ref: master
-  sha: 3cc2b829c407087ea6ceb52a74498223ee120824
+  sha: 98db22363deee325c46713a5d1f0e8a9dc870f9d
   specs:
     cargomedia/yasm (0.0.1)
       cargomedia/build (>= 0)

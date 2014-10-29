@@ -74,10 +74,10 @@
         "scripts/cleanup.sh",
         "scripts/cleanup-virtualbox.sh"
       ],
-      "execute_command": "{{.Vars}} sudo -E sh '{{.Path}}'",
+      "execute_command": "{{.Vars}} sudo -E sh -e '{{.Path}}'",
       "override": {
         "virtualbox": {
-          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh '{{.Path}}'"
+          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh -e '{{.Path}}'"
         }
       }
     }

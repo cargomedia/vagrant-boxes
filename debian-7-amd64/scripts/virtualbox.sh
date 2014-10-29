@@ -8,7 +8,10 @@ if test -f .vbox_version ; then
     /etc/init.d/virtualbox-ose-guest-utils stop
   fi
 
-  rmmod vboxguest
+  if lsmod | grep -q vboxguest; then
+    rmmod vboxguest
+  fi
+
   aptitude -y purge virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms virtualbox-ose-guest-utils
   aptitude -y install dkms
 

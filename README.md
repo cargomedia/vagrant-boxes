@@ -63,7 +63,7 @@ bundle install
 
 Download required puppet modules using [librarian-puppet](http://librarian-puppet.com/):
 ```
-cd puppet/
+cd puppet
 bundle exec librarian-puppet install
 ```
 

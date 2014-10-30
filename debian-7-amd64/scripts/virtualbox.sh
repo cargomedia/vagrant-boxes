@@ -8,14 +8,17 @@ if test -f .vbox_version ; then
     /etc/init.d/virtualbox-ose-guest-utils stop
   fi
 
-  rmmod vboxguest
+  if lsmod | grep -q vboxguest; then
+    rmmod vboxguest
+  fi
+
   aptitude -y purge virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms virtualbox-ose-guest-utils
   aptitude -y install dkms
 
   # Install the VirtualBox guest additions
   VBOX_ISO=VBoxGuestAdditions.iso
   mount -o loop $VBOX_ISO /mnt
-  yes|sh /mnt/VBoxLinuxAdditions.run
+  yes|sh /mnt/VBoxLinuxAdditions.run || [ $? -eq 1 ]
   umount /mnt
 
   # Cleanup Virtualbox

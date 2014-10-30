@@ -36,9 +36,9 @@ task :spec do |t|
     File.symlink(box_path, 'spec/current.box')
 
     if File.basename(template.name).match(/plain$/)
-      task.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb')
+      task.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb', 'spec/vagrant.rb')
     else
-      task.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb', 'spec/git.rb', 'spec/ruby.rb', 'spec/puppet.rb')
+      task.pattern = FileList.new('spec/filesystem.rb', 'spec/sudo.rb', 'spec/vagrant.rb', 'spec/git.rb', 'spec/ruby.rb', 'spec/puppet.rb')
     end
 
     task.run_task(true)

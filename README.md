@@ -56,10 +56,15 @@ end
 
 Development (building and uploading)
 ------------------------------------
+Install dependencies:
+```
+bundle install
+```
+
 Download required puppet modules using [librarian-puppet](http://librarian-puppet.com/):
 ```
 cd puppet
-librarian-puppet install
+bundle exec librarian-puppet install
 ```
 
 Rake parameters:
@@ -70,7 +75,7 @@ Rake parameters:
 - vagrant_cloud_access_token: Vagrant Cloud access token
 
 ```
-rake build    # Build all boxes
-rake spec     # Run serverspec tests (virtualbox build only!)
-rake release  # Release boxes to S3 and Vagrant Cloud
+bundle exec rake build    # Build all boxes
+bundle exec rake spec     # Run serverspec tests (virtualbox build only!)
+bundle exec rake release  # Release boxes to S3 and Vagrant Cloud
 ```

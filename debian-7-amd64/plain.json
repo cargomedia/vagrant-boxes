@@ -65,6 +65,7 @@
       "type": "shell",
       "scripts": [
         "scripts/base.sh",
+        "scripts/grub.sh",
         "scripts/virtualbox.sh",
         "scripts/virtualbox-vagrant.sh",
         "scripts/cleanup.sh",

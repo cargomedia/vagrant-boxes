@@ -13,6 +13,6 @@ describe user('puppet') do
   it { should belong_to_group 'puppet' }
 end
 
-describe command('puppet config print | grep ssldir') do
-  its(:stdout) { should eq 'ssldir = /etc/puppet/ssl' }
+describe command('puppet config print') do
+  its(:stdout) { should match 'ssldir = /etc/puppet/ssl' }
 end

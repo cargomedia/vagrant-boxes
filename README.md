@@ -22,6 +22,7 @@ end
 Usage: AWS
 ----------
 Based on [official Debian AMIs](https://wiki.debian.org/Cloud/AmazonEC2Image/Wheezy).
+Using the *HVM EBS* flavor as [recommended](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/virtualization_types.html) by Amazon.
 Available regions: `eu-west-1`, `us-east-1`.
 
 Example `Vagrantfile` (using the [vagrant AWS provider plugin](https://github.com/mitchellh/vagrant-aws)):

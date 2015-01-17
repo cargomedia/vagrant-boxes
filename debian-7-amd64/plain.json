@@ -44,7 +44,7 @@
       "name": "aws",
       "type": "amazon-ebs",
       "region": "eu-west-1",
-      "source_ami": "ami-630fcb14",
+      "source_ami": "ami-a345c3d4",
       "instance_type": "m3.large",
       "ssh_username": "admin",
       "ami_name": "debian-7-amd64-plain {{timestamp}}",

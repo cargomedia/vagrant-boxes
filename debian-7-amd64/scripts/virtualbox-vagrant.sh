@@ -1,7 +1,4 @@
 if test -f .vbox_version ; then
-    # Set up sudo
-    echo 'vagrant ALL=NOPASSWD:ALL' > /etc/sudoers.d/vagrant
-
     # Install vagrant keys
     mkdir -pm 700 /home/vagrant/.ssh
     curl -kLo /home/vagrant/.ssh/authorized_keys 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'

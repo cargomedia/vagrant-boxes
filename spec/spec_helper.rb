@@ -1,17 +1,15 @@
 require 'serverspec'
 require_relative 'vagrant_helper'
 
-include Serverspec::Helper::Ssh
-include Serverspec::Helper::DetectOS
-
-
 vagrant_helper = VagrantHelper.new('spec/')
 
 RSpec.configure do |c|
   c.before :suite do
     vagrant_helper.box_add('vagrant-boxes-spec', 'current.box')
     vagrant_helper.up
-    c.ssh = vagrant_helper.connect
+
+    Specinfra.configuration.backend = :ssh
+    Specinfra.configuration.ssh_options = vagrant_helper.ssh_options
   end
 
   c.after :suite do

@@ -82,7 +82,7 @@ module VagrantBoxes
       if versions.empty?
         version_name = '0.1.0'
       else
-        version_name = Gem::Version.new(versions.first.version).bump.to_s + '.0'
+        version_name = Gem::Version.new(versions.last.version).bump.to_s + '.0'
       end
       box.create_version(version_name)
     end

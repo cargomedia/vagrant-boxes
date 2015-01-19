@@ -1,5 +1,6 @@
 require 'shellwords'
 require 'net/ssh'
+require 'tempfile'
 
 class VagrantHelper
 
@@ -27,24 +28,10 @@ class VagrantHelper
     command 'destroy --force'
   end
 
-  def connect
-    user = Etc.getlogin
-    options = {}
-    host = ''
-    config = command 'ssh-config'
-    config.each_line do |line|
-      if match = /HostName (.*)/.match(line)
-        host = match[1]
-        options = Net::SSH::Config.for(host)
-      elsif  match = /User (.*)/.match(line)
-        user = match[1]
-      elsif match = /IdentityFile (.*)/.match(line)
-        options[:keys] = [match[1].gsub(/"/, '')]
-      elsif match = /Port (.*)/.match(line)
-        options[:port] = match[1]
-      end
-    end
-    @connection = Net::SSH.start(host, user, options)
+  def ssh_options
+    config = Tempfile.new('')
+    command("ssh-config > #{config.path}")
+    Net::SSH::Config.for('default', [config.path])
   end
 
 end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe command('puppet --version') do
-  it { should return_exit_status 0 }
+  its(:exit_status) { should eq 0 }
 end
 
 describe group('puppet') do
@@ -13,6 +13,6 @@ describe user('puppet') do
   it { should belong_to_group 'puppet' }
 end
 
-describe command('puppet config print | grep ssldir') do
-  it { should return_stdout 'ssldir = /etc/puppet/ssl' }
+describe command('puppet config print') do
+  its(:stdout) { should match 'ssldir = /etc/puppet/ssl' }
 end

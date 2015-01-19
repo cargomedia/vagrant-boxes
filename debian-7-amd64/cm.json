@@ -21,13 +21,13 @@
         "<enter>"
       ],
       "boot_wait": "3s",
-      "disk_size": 250000,
+      "disk_size": 30000,
       "guest_os_type": "Debian_64",
       "http_directory": "http",
-      "iso_checksum": "8fdb6715228ea90faba58cb84644d296",
+      "iso_checksum": "a91fba5001cf0fbccb44a7ae38c63b6e",
       "iso_checksum_type": "md5",
-      "iso_url": "http://cdimage.debian.org/debian-cd/7.5.0/amd64/iso-cd/debian-7.5.0-amd64-netinst.iso",
-      "shutdown_command": "echo 'vagrant' | sudo -S halt -p",
+      "iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
+      "shutdown_command": "sudo poweroff",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
@@ -44,7 +44,7 @@
       "name": "aws",
       "type": "amazon-ebs",
       "region": "eu-west-1",
-      "source_ami": "ami-630fcb14",
+      "source_ami": "ami-a345c3d4",
       "instance_type": "m3.large",
       "ssh_username": "admin",
       "ami_name": "debian-7-amd64-cm {{timestamp}}",
@@ -65,6 +65,7 @@
       "type": "shell",
       "scripts": [
         "scripts/base.sh",
+        "scripts/grub.sh",
         "scripts/virtualbox.sh",
         "scripts/virtualbox-vagrant.sh",
         "scripts/git.sh",
@@ -72,12 +73,7 @@
         "scripts/ruby.sh",
         "scripts/puppet.sh"
       ],
-      "execute_command": "{{.Vars}} sudo -E sh -e '{{.Path}}'",
-      "override": {
-        "virtualbox": {
-          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh -e '{{.Path}}'"
-        }
-      }
+      "execute_command": "{{.Vars}} sudo -E sh -e '{{.Path}}'"
     },
     {
       "type": "puppet-masterless",
@@ -90,12 +86,7 @@
         "scripts/cleanup.sh",
         "scripts/cleanup-virtualbox.sh"
       ],
-      "execute_command": "{{.Vars}} sudo -E sh -e '{{.Path}}'",
-      "override": {
-        "virtualbox": {
-          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S sh -e '{{.Path}}'"
-        }
-      }
+      "execute_command": "{{.Vars}} sudo -E sh -e '{{.Path}}'"
     }
   ]
 }

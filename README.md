@@ -5,7 +5,7 @@ Generate [Vagrant](http://www.vagrantup.com/) boxes with [packer](http://www.pac
 There are three flavors available:
 - `debian-7-amd64-plain`: Minimalistic Debian with Virtualbox-additions where applicable.
 - `debian-7-amd64-default`: Like above, plus `git`, `rsync`, `ruby` and `puppet`.
-- `debian-7-amd64-cm`: Like above, plus [CM framework dependencies](https://github.com/cargomedia/puppet-cm).
+- `debian-7-amd64-cm`: Like above, plus [CM framework](https://github.com/cargomedia/cm) dependencies.
 
 Boxes are built and released on [Vagrant Cloud](https://vagrantcloud.com/cargomedia) for `virtualbox` and `aws`.
 

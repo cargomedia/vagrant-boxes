@@ -89,7 +89,7 @@ GEM
     thread_safe (0.3.4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    vagrant_cloud (0.2.2)
+    vagrant_cloud (0.2.3)
       rest-client (~> 1.7)
 
 PLATFORMS

@@ -25,6 +25,11 @@ Based on [official Debian AMIs](https://wiki.debian.org/Cloud/AmazonEC2Image/Whe
 Using the *HVM EBS* flavor as [recommended](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/virtualization_types.html) by Amazon.
 Available regions: `eu-west-1`, `us-east-1`.
 
+##### Install the box for provider aws if not already done so
+```shell
+vagrant box add cargomedia/debian-7-amd64-default --provider aws
+```
+
 Example `Vagrantfile` (using the [vagrant AWS provider plugin](https://github.com/mitchellh/vagrant-aws)):
 ```ruby
 Vagrant.configure('2') do |config|

@@ -36,7 +36,7 @@ Vagrant.configure('2') do |config|
 
     aws.region = 'eu-west-1'
     aws.instance_type = 'm3.large'
-    aws.ami = 'ami-827f00ea'
+    aws.ami = '' # due to a bug, see https://github.com/mitchellh/vagrant-aws/issues/330
     aws.access_key_id = '<aws-access-key>'
     aws.secret_access_key = '<aws-secret-key>'
     aws.keypair_name = '<keypair-name>'

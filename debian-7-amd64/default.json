@@ -26,7 +26,7 @@
       "http_directory": "http",
       "iso_checksum": "a91fba5001cf0fbccb44a7ae38c63b6e",
       "iso_checksum_type": "md5",
-      "iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
+      "iso_url": "http://cdimage.debian.org/cdimage/archive/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
       "shutdown_command": "sudo poweroff",
       "ssh_password": "vagrant",
       "ssh_port": 22,

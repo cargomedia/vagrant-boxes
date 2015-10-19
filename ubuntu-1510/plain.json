@@ -1,0 +1,70 @@
+{
+  "builders": [
+    {
+      "name": "virtualbox",
+      "type": "virtualbox-iso",
+      "boot_command": [
+        "<tab><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+        "debian-installer=en_US ",
+        "auto ",
+        "locale=en_US ",
+        "kbd-chooser/method=de ",
+        "netcfg/get_hostname={{ .Name }} ",
+        "fb=false ",
+        "debconf/frontend=noninteractive ",
+        "console-setup/ask_detect=false ",
+        "keyboard-configuration/layout=USA ",
+        "keyboard-configuration/variant=USA ",
+        "passwd/user-fullname={{ user `ssh_username` }} ",
+        "passwd/user-password={{ user `ssh_password` }} ",
+        "passwd/user-password-again={{ user `ssh_password` }} ",
+        "passwd/username={{ user `ssh_username` }} ",
+        "<enter>"
+      ],
+      "boot_wait": "3s",
+      "disk_size": 30000,
+      "guest_os_type": "Ubuntu_64",
+      "http_directory": "http",
+      "iso_checksum_type": "none",
+      "iso_url": "file:///Users/cargomedia/Downloads/mini.iso",
+      "shutdown_command": "sudo poweroff",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_port": 22,
+      "ssh_username": "{{ user `ssh_username` }}",
+      "ssh_wait_timeout": "10000s",
+      "virtualbox_version_file": ".vbox_version",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "4096"],
+        ["modifyvm", "{{.Name}}", "--cpus", "1"]
+      ],
+      "vm_name": "ubuntu-1510-amd64-plain",
+      "headless": true
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "artifacts/{{.BuildName}}/ubuntu-1510-amd64-plain.box"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/base.sh",
+        "scripts/grub.sh",
+        "scripts/virtualbox.sh",
+        "scripts/virtualbox-vagrant.sh",
+        "scripts/cleanup.sh",
+        "scripts/cleanup-virtualbox.sh"
+      ],
+      "execute_command": "{{.Vars}} sudo -E sh -e '{{.Path}}'"
+    }
+  ],
+  "variables": {
+    "ssh_fullname": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_username": "vagrant"
+  }
+}

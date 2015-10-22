@@ -1,4 +1,3 @@
-exit 0
 if test -f /boot/grub/grub.cfg ; then
   # Remove 5s grub timeout to speed up booting
   cat <<EOF > /etc/default/grub

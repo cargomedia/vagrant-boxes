@@ -2,10 +2,12 @@ Vagrant boxes
 =============
 Generate [Vagrant](http://www.vagrantup.com/) boxes with [packer](http://www.packer.io/).
 
-There are three flavors available:
+You have the choice between these flavors:
 - `debian-7-amd64-plain`: Minimalistic Debian with Virtualbox-additions where applicable.
 - `debian-7-amd64-default`: Like above, plus `git`, `rsync`, `ruby` and `puppet`.
 - `debian-7-amd64-cm`: Like above, plus [CM framework](https://github.com/cargomedia/cm) dependencies.
+- `ubuntu-1504-amd64-plain`: Ubuntu Vivid Vervet (15.04) incarnation of the above
+- `ubuntu-1504-amd64-default`: Ubuntu Vivid Vervet (15.04) incarnation of the above
 
 Boxes are built and released on [Vagrant Cloud](https://vagrantcloud.com/cargomedia) for `virtualbox` and `aws`.
 

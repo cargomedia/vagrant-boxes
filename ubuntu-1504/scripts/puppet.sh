@@ -1,7 +1,7 @@
 # Prepare puppetlabs repo
-wget http://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
-dpkg -i puppetlabs-release-wheezy.deb
-rm puppetlabs-release-wheezy.deb
+wget http://apt.puppetlabs.com/puppetlabs-release-pc1-vivid.deb
+dpkg -i puppetlabs-release-pc1-vivid.deb
+rm puppetlabs-release-pc1-vivid.deb
 apt-get update
 
 # Install puppet/facter

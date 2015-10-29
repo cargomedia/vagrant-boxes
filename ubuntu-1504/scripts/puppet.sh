@@ -4,6 +4,13 @@ dpkg -i puppetlabs-release-pc1-vivid.deb
 rm puppetlabs-release-pc1-vivid.deb
 apt-get update
 
+# Prevent puppet agent from auto-starting
+mkdir -p /etc/systemd/system/puppet.service.d
+cat > /etc/systemd/system/puppet.service.d/disable.conf << EOF
+[Service]
+EnvironmentFile=/not/there
+EOF
+
 # Install puppet/facter
 apt-get install -y puppet facter
 

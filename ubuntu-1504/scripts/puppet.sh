@@ -4,13 +4,6 @@ dpkg -i puppetlabs-release-pc1-vivid.deb
 rm puppetlabs-release-pc1-vivid.deb
 apt-get update
 
-# Prevent puppet agent from auto-starting
-mkdir -p /etc/systemd/system/puppet.service.d
-cat > /etc/systemd/system/puppet.service.d/disable.conf << EOF
-[Service]
-EnvironmentFile=/not/there
-EOF
-
 # Install puppet/facter
 apt-get install -y puppet facter
 
@@ -22,3 +15,8 @@ ssldir = /etc/puppet/ssl
 logdir = /var/log/puppet
 rundir = /var/run/puppet
 EOF
+
+# Reinstall puppet.service when needed (no autostart)
+systemctl stop puppet
+rm -f /lib/systemd/system/puppet.service /var/lib/puppet/state/agent_disabled.lock /etc/init.d/puppet
+systemctl daemon-reload

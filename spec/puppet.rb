@@ -16,3 +16,7 @@ end
 describe command('puppet config print') do
   its(:stdout) { should match 'ssldir = /etc/puppet/ssl' }
 end
+
+describe service('puppet') do
+  it { should_not be_running }
+end

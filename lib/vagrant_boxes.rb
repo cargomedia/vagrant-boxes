@@ -6,6 +6,7 @@ module VagrantBoxes
   require 'fileutils'
   require 'aws-sdk'
   require 'vagrant_cloud'
+  require 'komenda'
 
   require 'vagrant_boxes/environment'
   require 'vagrant_boxes/template'

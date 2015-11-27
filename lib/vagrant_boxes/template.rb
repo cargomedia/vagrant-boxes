@@ -41,13 +41,25 @@ module VagrantBoxes
       end
     end
 
-    def build!(builders = nil)
+    def build!(builders = nil, tries = 3)
       builders ||= builder_list
       builders.each do |builder|
         FileUtils.mkdir_p File.dirname(output_path(builder))
       end
       env = {'AWS_ACCESS_KEY' => environment.aws.key_id, 'AWS_SECRET_KEY' => environment.aws.key_secret}
-      exec(['packer', 'build', "-only=#{builders.join(',')}", path], env)
+      result = exec(['packer', 'build', "-only=#{builders.join(',')}", path], env)
+      unless result.success?
+        $stderr.puts("Failed to build #{name}, full output:")
+        $stderr.print(result.output)
+        raise "Failed to build #{name}"
+      end
+    rescue => e
+      if (tries-=1) > 0
+        $stderr.puts "Retrying to build #{name}…"
+        retry
+      else
+        raise e
+      end
     end
 
     def upload!(builders, version, s3_bucket, s3_endpoint)
@@ -87,19 +99,18 @@ module VagrantBoxes
       box.create_version(version_name)
     end
 
+    # @param [Array<String>] command
+    # @param [Hash] env
+    # @return Komenda::Result
     def exec(command, env = {})
-      output = ''
-      Dir.chdir(File.dirname(path)) do
-        io = IO.popen(env, command, :err => [:child, :out]).each do |line|
-          puts line
-          output += line
-        end
-        io.close
-        if $?.exitstatus > 0
-          raise "Failure executing command `#{command}`."
-        end
+      process = Komenda.create(command, {:env => env, :cwd => File.dirname(path)})
+      process.on(:output) do |data|
+        $stderr.print("\e[2K\r")
+        $stderr.print(' ' + data.gsub("\n", "\r"))
       end
-      output
+      result = process.run
+      $stderr.print("\e[2K\r")
+      result
     end
   end
 end

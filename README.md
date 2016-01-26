@@ -6,6 +6,7 @@ You have the choice between these flavors:
 - `debian-7-amd64-plain`: Minimalistic Debian with Virtualbox-additions where applicable.
 - `debian-7-amd64-default`: Like above, plus `git`, `rsync`, `ruby` and `puppet`.
 - `debian-7-amd64-cm`: Like above, plus [CM framework](https://github.com/cargomedia/cm) dependencies.
+- `debian-8-amd64-plain`: Debian-8 Jessie incarnation of the above
 - `debian-8-amd64-default`: Debian-8 Jessie incarnation of the above
 - `ubuntu-1504-plain`: Ubuntu Vivid Vervet (15.04) incarnation of the above
 - `ubuntu-1504-default`: Ubuntu Vivid Vervet (15.04) incarnation of the above

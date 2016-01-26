@@ -1,5 +1,6 @@
 # Update the box
 apt-get -y update
+export DEBIAN_FRONTEND=noninteractive
 apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" upgrade
 
 apt-get -y install linux-headers-$(uname -r) build-essential

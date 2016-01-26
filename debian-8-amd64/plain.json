@@ -38,7 +38,7 @@
         ["modifyvm", "{{.Name}}", "--memory", "4096"],
         ["modifyvm", "{{.Name}}", "--cpus", "1"]
       ],
-      "vm_name": "debian-8-amd64-default",
+      "vm_name": "debian-8-amd64-plain",
       "headless": true
     },
     {
@@ -48,7 +48,7 @@
       "source_ami": "ami-e31a6594",
       "instance_type": "m3.large",
       "ssh_username": "admin",
-      "ami_name": "debian-8-amd64-default {{timestamp}}",
+      "ami_name": "debian-8-amd64-plain {{timestamp}}",
       "ami_description": "https://github.com/cargomedia/vagrant-boxes",
       "ami_groups": ["all"],
       "ami_regions": ["us-east-1"],
@@ -58,7 +58,7 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "artifacts/{{.BuildName}}/debian-8-amd64-default.box"
+      "output": "artifacts/{{.BuildName}}/debian-8-amd64-plain.box"
     }
   ],
   "provisioners": [
@@ -69,10 +69,6 @@
         "scripts/grub.sh",
         "scripts/virtualbox.sh",
         "scripts/virtualbox-vagrant.sh",
-        "scripts/git.sh",
-        "scripts/rsync.sh",
-        "scripts/ruby.sh",
-        "scripts/puppet.sh",
         "scripts/cleanup.sh",
         "scripts/cleanup-virtualbox.sh"
       ],

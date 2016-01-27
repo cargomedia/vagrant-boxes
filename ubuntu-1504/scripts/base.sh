@@ -1,6 +1,7 @@
 # Update the box
 apt-get -y update
-apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" upgrade
+export DEBIAN_FRONTEND=noninteractive
+apt-get -y -o Dpkg::Options::="--force-confnew" upgrade
 
 apt-get -y install linux-headers-$(uname -r) build-essential
 apt-get -y install zlib1g-dev libssl-dev libreadline-gplv2-dev

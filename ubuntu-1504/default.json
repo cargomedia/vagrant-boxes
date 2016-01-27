@@ -16,10 +16,10 @@
         "console-setup/ask_detect=false ",
         "keyboard-configuration/layout=USA ",
         "keyboard-configuration/variant=USA ",
-        "passwd/user-fullname={{ user `ssh_username` }} ",
-        "passwd/user-password={{ user `ssh_password` }} ",
-        "passwd/user-password-again={{ user `ssh_password` }} ",
-        "passwd/username={{ user `ssh_username` }} ",
+        "passwd/user-fullname=vagrant ",
+        "passwd/user-password=vagrant ",
+        "passwd/user-password-again=vagrant ",
+        "passwd/username=vagrant ",
         "<enter>"
       ],
       "boot_wait": "3s",
@@ -30,9 +30,9 @@
       "iso_checksum": "97282a3b066de4ee4c9409979737f3911f95ceab",
       "iso_url": "http://archive.ubuntu.com/ubuntu/dists/vivid/main/installer-amd64/current/images/netboot/mini.iso",
       "shutdown_command": "sudo poweroff",
-      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_password": "vagrant",
       "ssh_port": 22,
-      "ssh_username": "{{ user `ssh_username` }}",
+      "ssh_username": "vagrant",
       "ssh_wait_timeout": "10000s",
       "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
@@ -79,10 +79,5 @@
       ],
       "execute_command": "{{.Vars}} sudo -E sh -e '{{.Path}}'"
     }
-  ],
-  "variables": {
-    "ssh_fullname": "vagrant",
-    "ssh_password": "vagrant",
-    "ssh_username": "vagrant"
-  }
+  ]
 }

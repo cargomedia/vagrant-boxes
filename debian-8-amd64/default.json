@@ -27,11 +27,11 @@
       "http_directory": "http",
       "iso_checksum": "a9b490b4215d1e72e876b031dafa7184",
       "iso_checksum_type": "md5",
-      "iso_url": "http://mirror.switch.ch/ftp/mirror/debian-cd/current/amd64/iso-cd/debian-8.3.0-amd64-netinst.iso",
+      "iso_url": "http://cdimage.debian.org/debian-cd/8.3.0/amd64/iso-cd/debian-8.3.0-amd64-netinst.iso",
       "shutdown_command": "sudo poweroff",
-      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_password": "vagrant",
       "ssh_port": 22,
-      "ssh_username": "{{ user `ssh_username` }}",
+      "ssh_username": "vagrant",
       "ssh_wait_timeout": "10000s",
       "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
@@ -78,10 +78,5 @@
       ],
       "execute_command": "{{.Vars}} sudo -E sh -e '{{.Path}}'"
     }
-  ],
-  "variables": {
-    "ssh_fullname": "vagrant",
-    "ssh_password": "vagrant",
-    "ssh_username": "vagrant"
-  }
+  ]
 }

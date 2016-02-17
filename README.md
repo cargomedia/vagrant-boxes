@@ -35,7 +35,7 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'cargomedia/debian-7-amd64-default'
 
   config.vm.provider :aws do |aws, override|
-    override.ssh.username = 'admin'
+    override.ssh.username = 'admin' # For ubuntu use 'ubuntu'
     override.ssh.private_key_path = '~/.ssh/<private-key>.pem'
 
     aws.region = 'eu-west-1'

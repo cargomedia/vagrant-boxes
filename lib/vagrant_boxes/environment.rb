@@ -13,11 +13,14 @@ module VagrantBoxes
       @rollback_procs = []
     end
 
-    def find_templates
+    # @param [String] name_filter
+    def find_templates(name_filter = nil)
       files = Dir.glob(File.join(path, '*', '*.json'))
-      files.map do |file|
+      templates = files.map do |file|
         VagrantBoxes::Template.new(self, file)
       end
+      templates = templates.select { |template| template.name == name_filter } unless name_filter.nil?
+      templates
     end
 
     def add_rollback(proc)

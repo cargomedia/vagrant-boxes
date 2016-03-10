@@ -14,6 +14,7 @@ module VagrantBoxes
     end
 
     # @param [String] name_filter
+    # @return [Array<VagrantBoxes::Template>]
     def find_templates(name_filter = nil)
       files = Dir.glob(File.join(path, '*', '*.json'))
       templates = files.map do |file|

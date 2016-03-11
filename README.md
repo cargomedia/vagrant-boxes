@@ -74,6 +74,7 @@ bundle exec librarian-puppet install
 ```
 
 Rake parameters:
+- template: Name of the template to build (Default: all templates)
 - builder: A list of builders to use (Default: all builders)
 - aws_key_id: AWS key id
 - aws_key_secret: AWS key secret

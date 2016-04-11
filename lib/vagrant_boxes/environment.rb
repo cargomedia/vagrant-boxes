@@ -16,11 +16,12 @@ module VagrantBoxes
     # @param [String] name_filter
     # @return [Array<VagrantBoxes::Template>]
     def find_templates(name_filter = nil)
+      name_regex = Regexp.new(name_filter) unless name_filter.nil?
       files = Dir.glob(File.join(path, '*', '*.json'))
       templates = files.map do |file|
         VagrantBoxes::Template.new(self, file)
       end
-      templates = templates.select { |template| template.name == name_filter } unless name_filter.nil?
+      templates = templates.select { |template| template.name =~ name_regex } unless name_regex.nil?
       templates
     end
 

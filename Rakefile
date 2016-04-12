@@ -18,6 +18,21 @@ aws = VagrantBoxes::Aws.new(aws_key_id, aws_key_secret)
 vagrant_cloud = VagrantCloud::Account.new(vagrant_cloud_username, vagrant_cloud_access_token)
 environment = VagrantBoxes::Environment.new(File.dirname(__FILE__), aws, vagrant_cloud)
 
+
+desc 'Confirm procedure on selected boxes'
+task :confirm do |t|
+  def prompt(*args)
+    print(*args)
+    STDIN.gets
+  end
+  puts '**CAUTION** These boxes will be built:'
+  environment.find_templates(template_name).each do |template|
+    puts "\t- #{template.name} : #{builders ||template.builder_list}"
+  end
+  answer = prompt "\nDo you really want to proceed? (N/y)"
+  exit(1) if answer !~ /y|Y/
+end
+
 desc 'Build all boxes'
 task :build do |t|
   environment.find_templates(template_name).each do |template|

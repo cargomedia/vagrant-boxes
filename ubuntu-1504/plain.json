@@ -46,7 +46,7 @@
       "name": "aws",
       "type": "amazon-ebs",
       "region": "eu-west-1",
-      "source_ami": "ami-e38ab694",
+      "source_ami": "ami-ef8ab698",
       "instance_type": "m3.large",
       "ssh_username": "ubuntu",
       "ami_name": "ubuntu-1504-amd64-plain {{timestamp}}",

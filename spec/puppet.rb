@@ -9,5 +9,5 @@ describe command('puppet config print') do
 end
 
 describe service('puppet') do
-  it { should_not be_running }
+  it { should_not be_enabled }
 end

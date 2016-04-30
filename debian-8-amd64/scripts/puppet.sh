@@ -1,22 +1,21 @@
 # Prepare puppetlabs repo
-wget http://apt.puppetlabs.com/puppetlabs-release-jessie.deb
-dpkg -i puppetlabs-release-jessie.deb
-rm puppetlabs-release-jessie.deb
+wget -q http://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb -O puppetlabs-release-pc1.deb
+dpkg -i puppetlabs-release-pc1.deb
+rm puppetlabs-release-pc1.deb
 apt-get update
 
-# Install puppet/facter
-apt-get install -y puppet facter
+# Install
+apt-get install -qy puppet-agent
 
-# Configure
-cat > /etc/puppet/puppet.conf << EOF
-[main]
-confdir = /etc/puppet
-ssldir = /etc/puppet/ssl
-logdir = /var/log/puppet
-rundir = /var/run/puppet
-EOF
+# Symlink binaries to PATH
+binaries=( puppet facter mco hiera )
+for binary in ${binaries[@]}; do
+  binary_dest="/usr/bin/${binary}"
+  rm -f "${binary_dest}"
+  ln -s "/opt/puppetlabs/bin/${binary}" "${binary_dest}"
+done
 
-# Reinstall puppet.service when needed (no autostart)
+# Disable puppet service
 systemctl stop puppet
-rm -f /lib/systemd/system/puppet.service /var/lib/puppet/state/agent_disabled.lock /etc/init.d/puppet
+rm /lib/systemd/system/puppet.service
 systemctl daemon-reload

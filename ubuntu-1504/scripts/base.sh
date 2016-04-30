@@ -1,10 +1,21 @@
-# Update the box
-apt-get -y update
-export DEBIAN_FRONTEND=noninteractive
-apt-get -y -o Dpkg::Options::="--force-confnew" upgrade
+# Configure apt sources
+rm /etc/apt/sources.list.d/*
+cat <<EOF > /etc/apt/sources.list
+deb http://archive.ubuntu.com/ubuntu vivid main universe
+deb-src http://archive.ubuntu.com/ubuntu vivid main universe
 
+deb http://archive.ubuntu.com/ubuntu vivid-security main universe
+deb-src http://archive.ubuntu.com/ubuntu vivid-security main universe
+
+deb http://archive.ubuntu.com/ubuntu vivid-updates main universe
+deb-src http://archive.ubuntu.com/ubuntu vivid-updates main universe
+EOF
+
+# Update the box
+export DEBIAN_FRONTEND=noninteractive
+apt-get -y update
+apt-get -y -o Dpkg::Options::="--force-confnew" dist-upgrade
 apt-get -y install apt-transport-https
-apt-get -y install zlib1g-dev libssl-dev libreadline-gplv2-dev
 apt-get clean
 
 # Tweak sshd to prevent DNS resolution (speed up logins)

@@ -1,11 +1,21 @@
+# Configure apt sources
+rm /etc/apt/sources.list.d/*
+cat <<EOF > /etc/apt/sources.list
+deb http://httpredir.debian.org/debian jessie main contrib non-free
+deb-src http://httpredir.debian.org/debian jessie main contrib non-free
+
+deb http://httpredir.debian.org/debian jessie-updates main contrib non-free
+deb-src http://httpredir.debian.org/debian jessie-updates main contrib non-free
+
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://security.debian.org/ jessie/updates main contrib non-free
+EOF
+
 # Update the box
-apt-get -y update
 export DEBIAN_FRONTEND=noninteractive
-apt-get -y -o Dpkg::Options::="--force-confnew" upgrade
-
+apt-get -y update
+apt-get -y -o Dpkg::Options::="--force-confnew" dist-upgrade
 apt-get -y install apt-transport-https
-apt-get -y install zlib1g-dev libssl-dev libreadline-gplv2-dev
-
 apt-get clean
 
 # Tweak sshd to prevent DNS resolution (speed up logins)

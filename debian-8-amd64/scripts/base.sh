@@ -15,7 +15,7 @@ EOF
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y update
 apt-get -y -o Dpkg::Options::="--force-confnew" dist-upgrade
-apt-get -y install apt-transport-https
+apt-get -y install apt-transport-https curl
 apt-get clean
 
 # Tweak sshd to prevent DNS resolution (speed up logins)

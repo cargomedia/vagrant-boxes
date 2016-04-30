@@ -73,7 +73,7 @@
         "scripts/ruby.sh",
         "scripts/puppet.sh"
       ],
-      "execute_command": "{{.Vars}} sudo -E sh -e '{{.Path}}'"
+      "execute_command": "{{.Vars}} sudo -E bash -e '{{.Path}}'"
     },
     {
       "type": "puppet-masterless",
@@ -86,7 +86,7 @@
         "scripts/cleanup.sh",
         "scripts/cleanup-virtualbox.sh"
       ],
-      "execute_command": "{{.Vars}} sudo -E sh -e '{{.Path}}'"
+      "execute_command": "{{.Vars}} sudo -E bash -e '{{.Path}}'"
     }
   ]
 }

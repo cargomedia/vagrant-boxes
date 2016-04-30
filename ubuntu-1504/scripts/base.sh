@@ -1,5 +1,5 @@
 # Configure apt sources
-rm /etc/apt/sources.list.d/*
+rm -f /etc/apt/sources.list.d/*
 cat <<EOF > /etc/apt/sources.list
 deb http://archive.ubuntu.com/ubuntu vivid main universe
 deb-src http://archive.ubuntu.com/ubuntu vivid main universe

@@ -1,5 +1,5 @@
 # Configure apt sources
-rm /etc/apt/sources.list.d/*
+rm -f /etc/apt/sources.list.d/*
 cat <<EOF > /etc/apt/sources.list
 deb http://ftp.debian.org/debian wheezy main contrib non-free
 deb-src  http://ftp.debian.org/debian wheezy main contrib non-free

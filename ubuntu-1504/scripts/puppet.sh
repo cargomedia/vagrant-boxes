@@ -8,8 +8,8 @@ apt-get update
 apt-get install -qy puppet-agent
 
 # Symlink binaries to PATH
-binaries=( puppet facter mco hiera )
-for binary in ${binaries[@]}; do
+binaries='puppet facter mco hiera'
+for binary in ${binaries}; do
   binary_dest="/usr/bin/${binary}"
   rm -f "${binary_dest}"
   ln -s "/opt/puppetlabs/bin/${binary}" "${binary_dest}"

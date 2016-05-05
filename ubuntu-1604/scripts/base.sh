@@ -1,14 +1,14 @@
 # Configure apt sources
 rm -f /etc/apt/sources.list.d/*
 cat <<EOF > /etc/apt/sources.list
-deb http://archive.ubuntu.com/ubuntu vivid main universe
-deb-src http://archive.ubuntu.com/ubuntu vivid main universe
+deb http://archive.ubuntu.com/ubuntu xenial main universe
+deb-src http://archive.ubuntu.com/ubuntu xenial main universe
 
-deb http://archive.ubuntu.com/ubuntu vivid-security main universe
-deb-src http://archive.ubuntu.com/ubuntu vivid-security main universe
+deb http://archive.ubuntu.com/ubuntu xenial-security main universe
+deb-src http://archive.ubuntu.com/ubuntu xenial-security main universe
 
-deb http://archive.ubuntu.com/ubuntu vivid-updates main universe
-deb-src http://archive.ubuntu.com/ubuntu vivid-updates main universe
+deb http://archive.ubuntu.com/ubuntu xenial-updates main universe
+deb-src http://archive.ubuntu.com/ubuntu xenial-updates main universe
 EOF
 
 # Update the box

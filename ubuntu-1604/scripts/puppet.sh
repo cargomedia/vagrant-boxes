@@ -1,5 +1,5 @@
 # Prepare puppetlabs repo
-wget -q http://apt.puppetlabs.com/puppetlabs-release-pc1-vivid.deb -O puppetlabs-release-pc1.deb
+wget -q http://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb -O puppetlabs-release-pc1.deb
 dpkg -i puppetlabs-release-pc1.deb
 rm puppetlabs-release-pc1.deb
 apt-get update

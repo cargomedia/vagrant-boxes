@@ -1,4 +1,5 @@
-if test -f .vbox_version ; then
+if [[ $PACKER_BUILDER_TYPE =~ virtualbox ]]; then
+
     # Install vagrant keys
     mkdir -pm 700 /home/vagrant/.ssh
     curl -kLo /home/vagrant/.ssh/authorized_keys 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'

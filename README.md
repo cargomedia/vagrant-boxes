@@ -39,7 +39,7 @@ Vagrant.configure('2') do |config|
     override.ssh.private_key_path = '~/.ssh/<private-key>.pem'
 
     aws.region = 'eu-west-1'
-    aws.instance_type = 'm3.large'
+    aws.instance_type = 'm4.large'
     aws.ami = '' # due to a bug, see https://github.com/mitchellh/vagrant-aws/issues/330
     aws.access_key_id = '<aws-access-key>'
     aws.secret_access_key = '<aws-secret-key>'

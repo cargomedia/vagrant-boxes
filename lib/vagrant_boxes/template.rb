@@ -47,7 +47,7 @@ module VagrantBoxes
         FileUtils.mkdir_p File.dirname(output_path(builder))
       end
       env = {'AWS_ACCESS_KEY' => environment.aws.key_id, 'AWS_SECRET_KEY' => environment.aws.key_secret}
-      result = exec(['packer', 'build', "-only=#{builders.join(',')}", path], env)
+      result = exec(['packer', 'build', '-force', "-only=#{builders.join(',')}", path], env)
       unless result.success?
         $stderr.puts("Failed to build #{name}, full output:")
         $stderr.print(result.output)

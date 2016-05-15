@@ -105,12 +105,9 @@ module VagrantBoxes
     def exec(command, env = {})
       process = Komenda.create(command, {:env => env, :cwd => File.dirname(path)})
       process.on(:output) do |data|
-        $stderr.print("\e[2K\r")
-        $stderr.print(' ' + data.gsub("\n", "\r"))
+        $stderr.print(data)
       end
-      result = process.run
-      $stderr.print("\e[2K\r")
-      result
+      process.run
     end
   end
 end

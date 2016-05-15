@@ -1,4 +1,8 @@
 {
+  "variables": {
+    "aws_vpc_id": "{{env `aws_vpc`}}",
+    "aws_subnet_id": "{{env `aws_subnet`}}"
+  },
   "builders": [
     {
       "name": "virtualbox",
@@ -43,6 +47,8 @@
       "type": "amazon-ebs",
       "region": "eu-west-1",
       "source_ami": "ami-3079f543",
+      "vpc_id": "{{user `aws_vpc_id`}}",
+      "subnet_id": "{{user `aws_subnet_id`}}",
       "instance_type": "m4.large",
       "ssh_username": "ubuntu",
       "ami_name": "ubuntu-1604-amd64-default {{timestamp}}",

@@ -2,16 +2,25 @@ Vagrant boxes
 =============
 Generate [Vagrant](http://www.vagrantup.com/) boxes with [packer](http://www.packer.io/).
 
-You have the choice between these flavors:
-- `debian-7-amd64-plain`: Minimalistic Debian with Virtualbox-additions where applicable.
-- `debian-7-amd64-default`: Like above, plus `git`, `rsync`, `ruby` and `puppet`.
-- `debian-7-amd64-cm`: Like above, plus [CM framework](https://github.com/cargomedia/cm) dependencies.
-- `debian-8-amd64-plain`: Debian-8 Jessie incarnation of the above
-- `debian-8-amd64-default`: Debian-8 Jessie incarnation of the above
-- `ubuntu-1504-plain`: Ubuntu Vivid Vervet (15.04) incarnation of the above
-- `ubuntu-1504-default`: Ubuntu Vivid Vervet (15.04) incarnation of the above
-
 Boxes are built and released on [Vagrant Cloud](https://vagrantcloud.com/cargomedia) for `virtualbox` and `aws`.
+
+**Debian 8 (jessie):**
+- `debian-8-amd64-plain`: Minimalistic
+- `debian-8-amd64-default`: With *git*, *rsync*, *ruby* and *puppet*
+
+**Debian 7 (wheezy):**
+- `debian-7-amd64-plain`: Minimalistic
+- `debian-7-amd64-default`: With *git*, *rsync*, *ruby* and *puppet*
+- `debian-7-amd64-cm`: With [CM framework](https://github.com/cargomedia/cm) dependencies.
+
+**Ubuntu 16.04 (Xenial Xerus):**
+- `ubuntu-1604-plain`: Minimalistic
+- `ubuntu-1604-default`: With *git*, *rsync*, *ruby* and *puppet*
+
+**Ubuntu 15.04 (Vivid Vervet):**
+- `ubuntu-1504-plain`: Minimalistic
+- `ubuntu-1504-default`: With *git*, *rsync*, *ruby* and *puppet*
+
 
 Usage: Virtualbox
 -----------------
@@ -22,6 +31,7 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'cargomedia/debian-7-amd64-default'
 end
 ```
+
 
 Usage: AWS
 ----------
@@ -39,7 +49,7 @@ Vagrant.configure('2') do |config|
     override.ssh.private_key_path = '~/.ssh/<private-key>.pem'
 
     aws.region = 'eu-west-1'
-    aws.instance_type = 'm3.large'
+    aws.instance_type = 'm4.large'
     aws.ami = '' # due to a bug, see https://github.com/mitchellh/vagrant-aws/issues/330
     aws.access_key_id = '<aws-access-key>'
     aws.secret_access_key = '<aws-secret-key>'
@@ -59,6 +69,7 @@ Vagrant.configure('2') do |config|
   end
 end
 ```
+
 
 Development (building and uploading)
 ------------------------------------

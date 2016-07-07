@@ -3,4 +3,6 @@
 /*/output-virtualbox/
 /*/artifacts/
 /puppet/.tmp
-/puppet/modules
+/puppet/modules/
+!/puppet/modules/cm_ssl
+

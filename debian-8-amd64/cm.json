@@ -16,6 +16,7 @@
         "fb=false ",
         "debconf/frontend=noninteractive ",
         "console-setup/ask_detect=false ",
+        "console-keymaps-at/keymap=en_US ",
         "keyboard-configuration/xkb-keymap=en_US ",
         "keyboard-configuration/layout=USA ",
         "keyboard-configuration/variant=USA ",
@@ -38,7 +39,7 @@
         ["modifyvm", "{{.Name}}", "--memory", "4096"],
         ["modifyvm", "{{.Name}}", "--cpus", "1"]
       ],
-      "vm_name": "debian-8-amd64-plain",
+      "vm_name": "debian-8-amd64-cm",
       "headless": true
     },
     {
@@ -48,7 +49,7 @@
       "source_ami": "ami-e079f893",
       "instance_type": "m3.large",
       "ssh_username": "admin",
-      "ami_name": "debian-8-amd64-plain {{timestamp}}",
+      "ami_name": "debian-8-amd64-cm {{timestamp}}",
       "ami_description": "https://github.com/cargomedia/vagrant-boxes",
       "ami_groups": ["all"],
       "ami_regions": ["us-east-1"],
@@ -58,7 +59,7 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "artifacts/{{.BuildName}}/debian-8-amd64-plain.box"
+      "output": "artifacts/{{.BuildName}}/debian-8-amd64-cm.box"
     }
   ],
   "provisioners": [
@@ -69,6 +70,21 @@
         "scripts/grub.sh",
         "scripts/virtualbox.sh",
         "scripts/virtualbox-vagrant.sh",
+        "scripts/git.sh",
+        "scripts/rsync.sh",
+        "scripts/ruby.sh",
+        "scripts/puppet.sh"
+      ],
+      "execute_command": "{{.Vars}} sudo -E bash -e '{{.Path}}'"
+    },
+    {
+      "type": "puppet-masterless",
+      "module_paths": ["../puppet/modules/"],
+      "manifest_file": "../puppet/manifests/cm.pp"
+    },
+    {
+      "type": "shell",
+      "scripts": [
         "scripts/cleanup.sh",
         "scripts/cleanup-virtualbox.sh"
       ],

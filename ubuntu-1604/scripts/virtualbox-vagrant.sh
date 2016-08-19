@@ -6,6 +6,6 @@ if [[ $PACKER_BUILDER_TYPE =~ virtualbox ]]; then
     chmod 0600 /home/vagrant/.ssh/authorized_keys
     chown -R vagrant:vagrant /home/vagrant/.ssh
 
-    # Install NFS client
     apt-get -y install nfs-common
+    apt-get -y install resolvconf
 fi

@@ -90,9 +90,12 @@ module VagrantBoxes
 
     def next_version
       box = environment.vagrant_cloud.ensure_box(name)
-      version_name = 'v' + Time.now.strftime("%Y%m%d")
-      todays_versions = box.versions.select {|v| v =~ /^#{version_name}/}.size
-      version_name += "-rev#{todays_versions}" if todays_versions > 0
+      versions = box.versions
+      if versions.empty?
+        version_name = '0.1.0'
+      else
+        version_name = Gem::Version.new(versions.last.version).bump.to_s + '.0'
+      end
       box.create_version(version_name)
     end
 

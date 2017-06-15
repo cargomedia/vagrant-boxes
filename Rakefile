@@ -61,3 +61,17 @@ task :release do |t|
     end
   end
 end
+
+desc 'Confirm procedure on selected boxes'
+task :confirm do |t|
+  def prompt(*args)
+    print(*args)
+    STDIN.gets
+  end
+  puts '**CAUTION** These boxes will be built:'
+  environment.find_templates(template_name).each do |template|
+    puts "\t- #{template.name} : #{builders ||template.builder_list}"
+  end
+  answer = prompt "\nDo you really want to proceed? (N/y)"
+  exit(1) if answer !~ /y|Y/
+end

@@ -13,14 +13,6 @@ Boxes are built and released on [Vagrant Cloud](https://vagrantcloud.com/cargome
 - `debian-7-amd64-default`: With *git*, *rsync*, *ruby* and *puppet*
 - `debian-7-amd64-cm`: With [CM framework](https://github.com/cargomedia/cm) dependencies.
 
-**Ubuntu 16.04 (Xenial Xerus):**
-- `ubuntu-1604-plain`: Minimalistic
-- `ubuntu-1604-default`: With *git*, *rsync*, *ruby* and *puppet*
-
-**Ubuntu 15.04 (Vivid Vervet):**
-- `ubuntu-1504-plain`: Minimalistic
-- `ubuntu-1504-default`: With *git*, *rsync*, *ruby* and *puppet*
-
 
 Usage: Virtualbox
 -----------------

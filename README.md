@@ -1,3 +1,8 @@
+UNMAINTAINED
+============
+This project is not maintained anymore.
+If you want to take over contact us at tech@cargomedia.ch.
+
 Vagrant boxes
 =============
 Generate [Vagrant](http://www.vagrantup.com/) boxes with [packer](http://www.packer.io/).
